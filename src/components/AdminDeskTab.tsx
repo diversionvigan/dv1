@@ -2844,6 +2844,82 @@ export const AdminDeskTab: React.FC<AdminDeskTabProps> = ({
               </div>
             </div>
           </div>
+
+          {/* Database Reset & Purge Tool */}
+          <div className="p-6 rounded-2xl bg-rose-50/50 border border-rose-200 space-y-4">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-rose-100 text-rose-700 flex items-center justify-center">
+                <Trash2 className="w-5 h-5" />
+              </div>
+              <div>
+                <h4 className="font-serif font-bold text-sm text-[#2C1E15]">Database Purge &amp; Ghost Records Reset</h4>
+                <p className="text-[11px] text-[#786150]">
+                  Permanently remove deleted reservations, ghost guest profiles, and clear stale browser memory.
+                </p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
+              <button
+                type="button"
+                onClick={async () => {
+                  if (confirm("Are you sure you want to permanently clear all bookings from both the server and local database?")) {
+                    try {
+                      await fetch('/api/bookings/clear', { method: 'POST' });
+                      localStorage.removeItem('diversion_vigan_bookings');
+                      alert("All bookings have been cleared. The page will now reload.");
+                      window.location.reload();
+                    } catch {
+                      alert("Failed to clear bookings on server.");
+                    }
+                  }
+                }}
+                className="p-3 bg-white hover:bg-rose-50 border border-rose-200 rounded-xl text-xs font-bold text-rose-700 transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-2xs"
+              >
+                <Trash className="w-3.5 h-3.5" />
+                <span>Clear All Bookings</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => {
+                  if (confirm("Are you sure you want to clear the guest directory cache and custom guest profiles?")) {
+                    localStorage.removeItem('diversion_vigan_custom_guests');
+                    localStorage.removeItem('diversion_vigan_guest_overrides');
+                    localStorage.removeItem('diversion_deleted_guest_ids');
+                    localStorage.removeItem('diversion_guest_accounts_db');
+                    alert("Guest directory cache cleared. The page will now reload.");
+                    window.location.reload();
+                  }
+                }}
+                className="p-3 bg-white hover:bg-rose-50 border border-rose-200 rounded-xl text-xs font-bold text-rose-700 transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-2xs"
+              >
+                <Users className="w-3.5 h-3.5" />
+                <span>Clear Guest Directory</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => {
+                  if (confirm("This will clear all local browser cache for bookings, guests, and chat logs, then reload fresh from server. Proceed?")) {
+                    localStorage.removeItem('diversion_vigan_bookings');
+                    localStorage.removeItem('diversion_vigan_inquiries');
+                    localStorage.removeItem('diversion_vigan_custom_guests');
+                    localStorage.removeItem('diversion_vigan_guest_overrides');
+                    localStorage.removeItem('diversion_deleted_guest_ids');
+                    localStorage.removeItem('diversion_guest_accounts_db');
+                    sessionStorage.clear();
+                    alert("Browser cache cleaned! Reloading...");
+                    window.location.reload();
+                  }
+                }}
+                className="p-3 bg-white hover:bg-stone-50 border border-stone-300 rounded-xl text-xs font-bold text-[#2C1E15] transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-2xs"
+              >
+                <RotateCcw className="w-3.5 h-3.5 text-[#8B6B10]" />
+                <span>Flush Browser Cache</span>
+              </button>
+            </div>
+          </div>
         </div>
       )}
 
@@ -10054,10 +10130,23 @@ export const AdminDeskTab: React.FC<AdminDeskTabProps> = ({
               <Trash2 className="w-6 h-6" />
             </div>
             <div>
-              <h3 className="font-serif font-bold text-lg text-[#2C1E15]">Delete Guest Profile?</h3>
+              <h3 className="font-serif font-bold text-lg text-[#2C1E15]">Permanently Delete Guest Profile?</h3>
               <p className="text-xs text-[#786150] mt-1 leading-relaxed">
-                Are you sure you want to remove <strong className="text-[#2C1E15]">{deletingGuestProfile.fullName}</strong> ({deletingGuestProfile.phone}) from the Front Desk Guest Directory?
+                Are you sure you want to permanently delete <strong className="text-[#2C1E15]">{deletingGuestProfile.fullName}</strong> {deletingGuestProfile.phone ? `(${deletingGuestProfile.phone})` : ''} from the database?
               </p>
+              {(deletingGuestProfile.bookings.length > 0 || deletingGuestProfile.inquiries.length > 0) && (
+                <div className="mt-2.5 p-2.5 bg-rose-50 border border-rose-200 rounded-xl text-left text-[11px] text-rose-800 space-y-1">
+                  <p className="font-bold">This will also permanently remove:</p>
+                  <ul className="list-disc pl-4 space-y-0.5">
+                    {deletingGuestProfile.bookings.length > 0 && (
+                      <li>{deletingGuestProfile.bookings.length} linked reservation booking(s)</li>
+                    )}
+                    {deletingGuestProfile.inquiries.length > 0 && (
+                      <li>{deletingGuestProfile.inquiries.length} linked inquiry lead(s)</li>
+                    )}
+                  </ul>
+                </div>
+              )}
             </div>
             <div className="flex items-center gap-2 pt-2">
               <button
@@ -10070,13 +10159,65 @@ export const AdminDeskTab: React.FC<AdminDeskTabProps> = ({
               <button
                 type="button"
                 onClick={() => {
-                  setDeletedGuestIds((prev) => [...prev, deletingGuestProfile.id]);
-                  setGuestToastMessage(`Guest record for ${deletingGuestProfile.fullName} deleted.`);
+                  const guestId = deletingGuestProfile.id;
+
+                  // 1. Delete all associated bookings from database
+                  if (onDeleteBooking && deletingGuestProfile.bookings.length > 0) {
+                    deletingGuestProfile.bookings.forEach((b) => {
+                      onDeleteBooking(b.id);
+                    });
+                  }
+
+                  // 2. Delete all associated inquiries from database
+                  if (onDeleteInquiry && deletingGuestProfile.inquiries.length > 0) {
+                    deletingGuestProfile.inquiries.forEach((inq) => {
+                      onDeleteInquiry(inq.id);
+                    });
+                  }
+
+                  // 3. Remove from custom guests state & localStorage
+                  setCustomGuests((prev) => {
+                    const filtered = prev.filter(
+                      (cg) => (cg.phone || cg.email || cg.fullName || cg.id).trim().toLowerCase() !== guestId
+                    );
+                    localStorage.setItem('diversion_vigan_custom_guests', JSON.stringify(filtered));
+                    return filtered;
+                  });
+
+                  // 4. Remove from guest overrides
+                  setGuestOverrides((prev) => {
+                    const next = { ...prev };
+                    delete next[guestId];
+                    localStorage.setItem('diversion_vigan_guest_overrides', JSON.stringify(next));
+                    return next;
+                  });
+
+                  // 5. Remove from registered guest accounts
+                  try {
+                    const savedAccs = JSON.parse(localStorage.getItem('diversion_guest_accounts_db') || '[]');
+                    if (Array.isArray(savedAccs)) {
+                      const filteredAccs = savedAccs.filter((a: any) => {
+                        const matchPhone = deletingGuestProfile.phone && a.phone === deletingGuestProfile.phone;
+                        const matchEmail = deletingGuestProfile.email && a.email?.toLowerCase() === deletingGuestProfile.email.toLowerCase();
+                        const matchName = a.fullName?.toLowerCase() === deletingGuestProfile.fullName.toLowerCase();
+                        return !matchPhone && !matchEmail && !matchName;
+                      });
+                      localStorage.setItem('diversion_guest_accounts_db', JSON.stringify(filteredAccs));
+                    }
+                  } catch {}
+
+                  // 6. Record in deleted IDs list
+                  setDeletedGuestIds((prev) => [...prev, guestId]);
+                  if (selectedGuestDossier?.id === guestId) {
+                    setSelectedGuestDossier(null);
+                  }
+
+                  setGuestToastMessage(`Guest record and data for ${deletingGuestProfile.fullName} permanently deleted.`);
                   setDeletingGuestProfile(null);
                 }}
                 className="flex-1 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-700 text-white text-xs font-bold transition-all shadow-md cursor-pointer"
               >
-                Confirm Delete
+                Confirm Delete All
               </button>
             </div>
           </div>

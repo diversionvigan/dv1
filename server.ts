@@ -259,6 +259,16 @@ async function startServer() {
     }
   });
 
+  // 7. Clear all bookings (Production purge)
+  app.post('/api/bookings/clear', (_req, res) => {
+    try {
+      Storage.saveBookings([]);
+      res.json({ success: true, message: 'All bookings cleared successfully.' });
+    } catch (err: any) {
+      res.status(500).json({ success: false, error: 'Failed to clear bookings.' });
+    }
+  });
+
   // ==========================================
   // INQUIRIES REST API ENDPOINTS
   // ==========================================
