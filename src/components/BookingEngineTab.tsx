@@ -325,7 +325,7 @@ export const BookingEngineTab: React.FC<BookingEngineTabProps> = ({
   // Compute booked dates for currently selected room unit(s)
   const bookedDatesSet = useMemo(() => {
     const set = new Set<string>();
-    const list = existingBookings && existingBookings.length > 0 ? existingBookings : INITIAL_BOOKINGS;
+    const list = existingBookings || [];
 
     list.forEach((b) => {
       // Check if this booking matches any of the currently selected accommodation units (or all units if none selected)
@@ -363,7 +363,7 @@ export const BookingEngineTab: React.FC<BookingEngineTabProps> = ({
   // Helper to check room booking status for selected dates and overall
   const getRoomBookingInfo = useCallback(
     (room: RoomUnit) => {
-      const list = existingBookings && existingBookings.length > 0 ? existingBookings : INITIAL_BOOKINGS;
+      const list = existingBookings || [];
       const roomBookings = list.filter((b) => {
         if (b.status === 'Cancelled') return false;
         if (b.roomId === room.id) return true;

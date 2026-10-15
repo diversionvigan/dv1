@@ -18,183 +18,9 @@ const INQUIRIES_FILE = path.join(DATA_DIR, 'inquiries.json');
 const ROOMS_FILE = path.join(DATA_DIR, 'rooms.json');
 const REVIEWS_FILE = path.join(DATA_DIR, 'reviews.json');
 
-const SEED_REVIEWS: RoomReview[] = [
-  {
-    id: 'REV-1001',
-    roomId: 'room-14',
-    roomTitle: 'Room 14 – Family Room',
-    guestName: 'Kristine Mendoza',
-    guestEmail: 'kristine.mendoza@gmail.com',
-    rating: 5,
-    comment: 'Super clean and spacious family room! The aircon is very cold and parking is right in front. Will definitely stay here again when in Vigan.',
-    status: 'approved',
-    createdAt: new Date(Date.now() - 86400000 * 3).toISOString(),
-    stayDate: 'October 2026',
-    screenedAt: new Date(Date.now() - 86400000 * 2).toISOString(),
-    screenedBy: 'Front Desk Admin',
-  },
-  {
-    id: 'REV-1002',
-    roomId: 'private-villa-pool',
-    roomTitle: 'Private Villa (with Swimming Pool)',
-    guestName: 'Mark Anthony Ramos',
-    guestEmail: 'mark.ramos@gmail.com',
-    rating: 5,
-    comment: 'The private swimming pool is pristine and perfect for our reunion! Very peaceful ambiance and only 5 mins away from Calle Crisologo.',
-    status: 'approved',
-    createdAt: new Date(Date.now() - 86400000 * 5).toISOString(),
-    stayDate: 'October 2026',
-    screenedAt: new Date(Date.now() - 86400000 * 4).toISOString(),
-    screenedBy: 'Front Desk Admin',
-  },
-  {
-    id: 'REV-1003',
-    roomId: 'room-8',
-    roomTitle: 'Room 8 – Standard Double Room',
-    guestName: 'Jayson Valdez',
-    guestEmail: 'jayson.valdez@yahoo.com',
-    rating: 5,
-    comment: 'Great value for money. Very quiet location along Diversion Road with reliable Wi-Fi and 24-hr security CCTV.',
-    status: 'pending',
-    createdAt: new Date(Date.now() - 3600000 * 6).toISOString(),
-    stayDate: 'October 2026',
-  },
-];
-
-
-// Initial seed bookings so the calendar & front-desk screening have initial live data
-const SEED_BOOKINGS: BookingRecord[] = [
-  {
-    id: 'DV-2026-8941',
-    createdAt: new Date(Date.now() - 3600000 * 4).toISOString(),
-    roomId: 'private-villa-pool',
-    roomTitle: 'Private Villa (with Swimming Pool)',
-    stayType: 'nightly',
-    checkInDate: new Date(Date.now() + 86400000 * 2).toISOString().split('T')[0],
-    checkOutDate: new Date(Date.now() + 86400000 * 4).toISOString().split('T')[0],
-    numberOfNights: 2,
-    adultGuests: 10,
-    childGuests: 2,
-    addons: [
-      { id: 'breakfast_set', name: 'Traditional Ilocano Breakfast Set', quantity: 10, cost: 3000 },
-      { id: 'billiards_darts', name: 'Mini Billiards & Darts Access', quantity: 1, cost: 200 }
-    ],
-    baseRatePerUnit: 8000,
-    baseStayTotal: 16000,
-    addonsTotal: 3200,
-    discountAmount: 0,
-    grandTotal: 19200,
-    paymentOption: 'partial_40',
-    amountPaidNow: 7680,
-    remainingBalance: 11520,
-    paymentMethod: 'gcash',
-    paymentSlipUrl: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=800&q=80',
-    paymentSlipFileName: 'gcash_deposit_ref78901.jpg',
-    guestName: 'Atty. Roberto Dela Cruz',
-    guestPhone: '0917 568 1408',
-    guestEmail: 'roberto.delacruz@law.ph',
-    specialRequests: 'Celebrating family anniversary. Early check-in requested if possible.',
-    status: 'Pending Slip Review',
-    staffNotes: '40% GCash downpayment slip uploaded. Awaiting front-desk reference check with GCash App.',
-  },
-  {
-    id: 'DV-2026-6204',
-    createdAt: new Date(Date.now() - 86400000 * 2).toISOString(),
-    roomId: 'room-14',
-    roomTitle: 'Room 14 – Family Room',
-    stayType: 'nightly',
-    checkInDate: new Date().toISOString().split('T')[0], // Today
-    checkOutDate: new Date(Date.now() + 86400000).toISOString().split('T')[0], // Tomorrow
-    numberOfNights: 1,
-    adultGuests: 4,
-    childGuests: 1,
-    addons: [],
-    baseRatePerUnit: 1500,
-    baseStayTotal: 1500,
-    addonsTotal: 0,
-    discountAmount: 0,
-    grandTotal: 1500,
-    paymentOption: 'full',
-    amountPaidNow: 1500,
-    remainingBalance: 0,
-    paymentMethod: 'gcash',
-    paymentSlipUrl: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=800&q=80',
-    paymentSlipFileName: 'gcash_full_payment_ref4412.jpg',
-    guestName: 'Kristine Mendoza',
-    guestPhone: '0917 156 2062',
-    guestEmail: 'kristine.mendoza@gmail.com',
-    specialRequests: 'Extra blankets for children.',
-    status: 'Confirmed',
-    staffNotes: 'Verified via GCash 09175681408. Room 14 sanitized & keys prepared at front desk.',
-  },
-  {
-    id: 'DV-2026-7818',
-    createdAt: new Date(Date.now() - 86400000 * 1).toISOString(),
-    roomId: 'room-18',
-    roomTitle: 'Room 18 – Big Family Room',
-    stayType: 'nightly',
-    checkInDate: new Date(Date.now() + 86400000 * 3).toISOString().split('T')[0],
-    checkOutDate: new Date(Date.now() + 86400000 * 5).toISOString().split('T')[0],
-    numberOfNights: 2,
-    adultGuests: 8,
-    childGuests: 0,
-    addons: [],
-    baseRatePerUnit: 2000,
-    baseStayTotal: 4000,
-    addonsTotal: 0,
-    discountAmount: 0,
-    grandTotal: 4000,
-    paymentOption: 'full',
-    amountPaidNow: 4000,
-    remainingBalance: 0,
-    paymentMethod: 'gcash',
-    guestName: 'Maricel Soriano',
-    guestPhone: '0922 841 9302',
-    guestEmail: 'maricel.soriano@gmail.com',
-    status: 'Confirmed',
-    staffNotes: 'Reserved for Vigan heritage family tour.',
-  },
-  {
-    id: 'DV-2026-5501',
-    createdAt: new Date(Date.now() - 86400000 * 3).toISOString(),
-    roomId: 'room-0',
-    roomTitle: 'Room 0 – Big Family Room',
-    stayType: 'nightly',
-    checkInDate: new Date(Date.now() + 86400000 * 1).toISOString().split('T')[0],
-    checkOutDate: new Date(Date.now() + 86400000 * 3).toISOString().split('T')[0],
-    numberOfNights: 2,
-    adultGuests: 6,
-    childGuests: 2,
-    addons: [],
-    baseRatePerUnit: 2000,
-    baseStayTotal: 4000,
-    addonsTotal: 0,
-    discountAmount: 0,
-    grandTotal: 4000,
-    paymentOption: 'full',
-    amountPaidNow: 4000,
-    remainingBalance: 0,
-    paymentMethod: 'front_desk',
-    guestName: 'Eduardo Valerio',
-    guestPhone: '0918 332 9941',
-    status: 'Confirmed',
-    staffNotes: 'Direct phone reservation.',
-  }
-];
-
-const SEED_INQUIRIES: InquiryRecord[] = [
-  {
-    id: 'INQ-1042',
-    createdAt: new Date(Date.now() - 86400000).toISOString(),
-    fullName: 'Dr. Clarissa Alcantara',
-    phone: '0991 296 0718',
-    email: 'clarissa.alcantara@hospital.ph',
-    roomInterest: 'Private Villa (Whole Compound)',
-    targetDates: 'Next weekend (Fri-Sun)',
-    message: 'Good day! We are planning a 15-pax medical team retreat. Is exclusive swimming pool access included and can we bring our own catering?',
-    status: 'New'
-  }
-];
+const SEED_REVIEWS: RoomReview[] = [];
+const SEED_BOOKINGS: BookingRecord[] = [];
+const SEED_INQUIRIES: InquiryRecord[] = [];
 
 // Helper read/write functions
 function readJsonFile<T>(filePath: string, fallback: T): T {
@@ -234,12 +60,7 @@ if (!fs.existsSync(ROOMS_FILE)) {
 export const Storage = {
   // Bookings
   getBookings(): BookingRecord[] {
-    const list = readJsonFile<BookingRecord[]>(BOOKINGS_FILE, SEED_BOOKINGS);
-    if (!list || list.length === 0) {
-      writeJsonFile(BOOKINGS_FILE, SEED_BOOKINGS);
-      return SEED_BOOKINGS;
-    }
-    return list;
+    return readJsonFile<BookingRecord[]>(BOOKINGS_FILE, []);
   },
 
   saveBookings(bookings: BookingRecord[]): void {
@@ -370,7 +191,7 @@ export const Storage = {
 
   // Inquiries
   getInquiries(): InquiryRecord[] {
-    return readJsonFile<InquiryRecord[]>(INQUIRIES_FILE, SEED_INQUIRIES);
+    return readJsonFile<InquiryRecord[]>(INQUIRIES_FILE, []);
   },
 
   saveInquiries(inquiries: InquiryRecord[]): void {
@@ -449,7 +270,7 @@ export const Storage = {
 
   // Room Reviews
   getReviews(): RoomReview[] {
-    return readJsonFile<RoomReview[]>(REVIEWS_FILE, SEED_REVIEWS);
+    return readJsonFile<RoomReview[]>(REVIEWS_FILE, []);
   },
 
   saveReviews(reviews: RoomReview[]): void {

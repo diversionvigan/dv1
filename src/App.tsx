@@ -38,14 +38,14 @@ export default function App() {
       const saved = localStorage.getItem('diversion_vigan_bookings');
       if (saved) {
         const parsed = JSON.parse(saved);
-        if (Array.isArray(parsed) && parsed.length > 0) {
+        if (Array.isArray(parsed)) {
           return parsed;
         }
       }
     } catch {
       // fallback
     }
-    return INITIAL_BOOKINGS;
+    return [];
   });
 
   // Guest Inquiries state
@@ -125,51 +125,10 @@ export default function App() {
       const saved = localStorage.getItem('diversion_vigan_reviews');
       if (saved) {
         const parsed = JSON.parse(saved);
-        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+        if (Array.isArray(parsed)) return parsed;
       }
     } catch {}
-    return [
-      {
-        id: 'REV-1001',
-        roomId: 'room-14',
-        roomTitle: 'Room 14 – Family Room',
-        guestName: 'Kristine Mendoza',
-        guestEmail: 'kristine.mendoza@gmail.com',
-        rating: 5,
-        comment: 'Super clean and spacious family room! The aircon is very cold and parking is right in front. Will definitely stay here again when in Vigan.',
-        status: 'approved',
-        createdAt: new Date(Date.now() - 86400000 * 3).toISOString(),
-        stayDate: 'October 2026',
-        screenedAt: new Date(Date.now() - 86400000 * 2).toISOString(),
-        screenedBy: 'Front Desk Admin',
-      },
-      {
-        id: 'REV-1002',
-        roomId: 'private-villa-pool',
-        roomTitle: 'Private Villa (with Swimming Pool)',
-        guestName: 'Mark Anthony Ramos',
-        guestEmail: 'mark.ramos@gmail.com',
-        rating: 5,
-        comment: 'The private swimming pool is pristine and perfect for our reunion! Very peaceful ambiance and only 5 mins away from Calle Crisologo.',
-        status: 'approved',
-        createdAt: new Date(Date.now() - 86400000 * 5).toISOString(),
-        stayDate: 'October 2026',
-        screenedAt: new Date(Date.now() - 86400000 * 4).toISOString(),
-        screenedBy: 'Front Desk Admin',
-      },
-      {
-        id: 'REV-1003',
-        roomId: 'room-8',
-        roomTitle: 'Room 8 – Standard Double Room',
-        guestName: 'Jayson Valdez',
-        guestEmail: 'jayson.valdez@yahoo.com',
-        rating: 5,
-        comment: 'Great value for money. Very quiet location along Diversion Road with reliable Wi-Fi and 24-hr security CCTV.',
-        status: 'pending',
-        createdAt: new Date(Date.now() - 3600000 * 6).toISOString(),
-        stayDate: 'October 2026',
-      },
-    ];
+    return [];
   });
 
   useEffect(() => {
@@ -202,31 +161,7 @@ export default function App() {
       if (bookingsRes.status === 'fulfilled' && bookingsRes.value.ok) {
         const bJson = await bookingsRes.value.json();
         if (bJson.success && Array.isArray(bJson.data)) {
-          setBookings((prev) => {
-            const existingIds = new Set(prev.map((b) => String(b.id || (b as any).bookingReference || (b as any).referenceNumber)));
-            const newFromServer = bJson.data.filter((b: BookingRecord) => {
-              const id = b.id || (b as any).bookingReference || (b as any).referenceNumber;
-              return id ? !existingIds.has(String(id)) : false;
-            });
-            const merged = [...prev, ...newFromServer];
-
-            // If local state has bookings not yet stored on server, sync them to server
-            const serverIds = new Set(bJson.data.map((b: BookingRecord) => String(b.id || (b as any).bookingReference || (b as any).referenceNumber)));
-            const missingOnServer = prev.filter((b) => {
-              const id = b.id || (b as any).bookingReference || (b as any).referenceNumber;
-              return id ? !serverIds.has(String(id)) : false;
-            });
-            if (missingOnServer.length > 0) {
-              fetch('/api/restore', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ bookings: missingOnServer }),
-              }).catch(() => {});
-            }
-
-            if (JSON.stringify(prev) === JSON.stringify(merged)) return prev;
-            return merged;
-          });
+          setBookings(bJson.data);
           syncSuccess = true;
         }
       }
@@ -234,43 +169,14 @@ export default function App() {
       if (inquiriesRes.status === 'fulfilled' && inquiriesRes.value.ok) {
         const inqJson = await inquiriesRes.value.json();
         if (inqJson.success && Array.isArray(inqJson.data)) {
-          setInquiries((prev) => {
-            const existingIds = new Set(prev.map((i) => String(i.id || i.createdAt)));
-            const newFromServer = inqJson.data.filter((i: InquiryRecord) => {
-              const id = i.id || i.createdAt;
-              return id ? !existingIds.has(String(id)) : false;
-            });
-            const merged = [...prev, ...newFromServer];
-
-            const serverIds = new Set(inqJson.data.map((i: InquiryRecord) => String(i.id || i.createdAt)));
-            const missingOnServer = prev.filter((i) => {
-              const id = i.id || i.createdAt;
-              return id ? !serverIds.has(String(id)) : false;
-            });
-            if (missingOnServer.length > 0) {
-              fetch('/api/restore', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ inquiries: missingOnServer }),
-              }).catch(() => {});
-            }
-
-            if (JSON.stringify(prev) === JSON.stringify(merged)) return prev;
-            return merged;
-          });
+          setInquiries(inqJson.data);
         }
       }
 
-            if (reviewsRes.status === 'fulfilled' && reviewsRes.value.ok) {
+      if (reviewsRes.status === 'fulfilled' && reviewsRes.value.ok) {
         const revJson = await reviewsRes.value.json();
         if (revJson.success && Array.isArray(revJson.data)) {
-          setReviews((prev) => {
-            const existingIds = new Set(prev.map((r) => String(r.id)));
-            const newFromServer = revJson.data.filter((r: RoomReview) => !existingIds.has(String(r.id)));
-            const merged = [...prev, ...newFromServer];
-            if (JSON.stringify(prev) === JSON.stringify(merged)) return prev;
-            return merged;
-          });
+          setReviews(revJson.data);
         }
       }
 
