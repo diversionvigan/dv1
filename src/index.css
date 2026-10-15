@@ -1,0 +1,255 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-primary-brown: #2C1E15;
+    --color-deep-espresso: #1A1009;
+    --color-warm-chestnut: #3D2616;
+    --color-mocha: #523A2A;
+    --color-taupe: #786150;
+    --color-creme: #FDFBF7;
+    --color-parchment: #FAF7F2;
+    --color-sand: #F5EDE0;
+    --color-gold-accent: #D4AF37;
+    --color-warm-bronze: #B8860B;
+    --color-border-warm: #E6D7C3;
+  }
+
+  ::selection {
+    background-color: #3D2616;
+    color: #FFFDF7;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #FDFBF7;
+    color: #1F140C;
+    accent-color: #B8860B;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    letter-spacing: -0.011em;
+    line-height: 1.55;
+  }
+
+  /* Custom elegant brown scrollbars */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #FAF7F2;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #D9C5B0;
+    border-radius: 4px;
+    border: 2px solid #FAF7F2;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #B8860B;
+  }
+
+  h1, h2, h3, h4, h5, h6, .font-serif {
+    font-family: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+    letter-spacing: -0.018em;
+    text-rendering: optimizeLegibility;
+  }
+
+  .font-brand {
+    font-family: 'Cinzel', 'Playfair Display', Georgia, serif;
+  }
+
+  .font-monogram {
+    font-family: 'Cormorant Garamond', 'Cinzel', serif;
+  }
+}
+
+/* Elegant Brown Gold Shimmer & Monogram Utilities */
+.gold-gradient, .rose-gold-gradient {
+  background: linear-gradient(135deg, #B8860B 0%, #D4AF37 35%, #F7E9BC 50%, #C5A059 70%, #997A15 100%);
+}
+
+.gold-gradient-soft, .rose-gold-gradient-soft {
+  background: linear-gradient(135deg, #FDF9F0 0%, #F6EBD3 50%, #EAD6B3 100%);
+}
+
+.gold-gradient-dark, .rose-gold-gradient-dark {
+  background: linear-gradient(145deg, #1A1009 0%, #2A1A0F 45%, #3D2616 75%, #1A1009 100%);
+}
+
+.gold-gradient-subtle, .rose-gold-gradient-subtle {
+  background: linear-gradient(135deg, #FFFDF9 0%, #F9F4EB 100%);
+}
+
+.gold-text, .rose-gold-text {
+  background: linear-gradient(135deg, #997A15 0%, #C5A059 35%, #E5C158 55%, #8B6B10 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-text-light, .rose-gold-text-light {
+  background: linear-gradient(135deg, #FFFDF5 0%, #F9ECC4 50%, #E5C158 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-border, .rose-gold-border {
+  border-color: #E6D7C3;
+}
+
+.gold-border-glow, .rose-gold-border-glow {
+  border-color: #D4AF37;
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.28);
+}
+
+.gold-glow, .rose-gold-glow {
+  box-shadow: 0 8px 25px -4px rgba(184, 134, 11, 0.22);
+}
+
+.gold-pill-active, .rose-gold-pill-active {
+  background: linear-gradient(135deg, #B8860B 0%, #D4AF37 50%, #A67908 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(184, 134, 11, 0.35);
+}
+
+/* Monogram subtle background patterns */
+.monogram-pattern-dark {
+  background-color: #1A1009;
+  background-image: radial-gradient(circle at center, rgba(212, 175, 55, 0.12) 1px, transparent 1px), radial-gradient(circle at center, rgba(243, 229, 171, 0.06) 1px, transparent 1px);
+  background-size: 32px 32px;
+  background-position: 0 0, 16px 16px;
+}
+
+.monogram-pattern-light {
+  background-image: radial-gradient(circle at center, rgba(184, 134, 11, 0.09) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* Glassmorphism utility with Brown Gold highlights */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.90);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(230, 215, 195, 0.75);
+}
+
+.glass-dark {
+  background: rgba(26, 16, 9, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(212, 175, 55, 0.30);
+}
+
+/* Print styling for clean voucher output on thermal printer (80mm standard) */
+@page {
+  size: 80mm auto;
+  margin: 0;
+}
+
+@media print {
+  html, body {
+    width: 80mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  body * {
+    visibility: hidden;
+  }
+
+  #printable-voucher, #printable-voucher * {
+    visibility: visible;
+  }
+
+  #printable-voucher {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 80mm !important;
+    max-width: 80mm !important;
+    min-width: 80mm !important;
+    margin: 0 !important;
+    padding: 3mm 4mm !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+  }
+
+  .printable-card {
+    border: none !important;
+    box-shadow: none !important;
+    width: 100% !important;
+    margin: 0 !important;
+  }
+}
+
+/* Live Chat Eye-Catching Keyframe Animations */
+@keyframes chat-pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.45), 0 10px 25px -5px rgba(26, 16, 9, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(212, 175, 55, 0), 0 16px 30px -5px rgba(184, 134, 11, 0.4);
+  }
+}
+
+@keyframes chat-sweep {
+  0% {
+    transform: translateX(-120%) rotate(25deg);
+  }
+  20%, 100% {
+    transform: translateX(280%) rotate(25deg);
+  }
+}
+
+@keyframes chat-badge-wiggle {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  15% { transform: scale(1.15) rotate(-8deg); }
+  30% { transform: scale(1.15) rotate(8deg); }
+  45% { transform: scale(1) rotate(0deg); }
+}
+
+@keyframes chat-bubble-pop {
+  0% {
+    opacity: 0;
+    transform: translateY(14px) scale(0.92);
+  }
+  70% {
+    opacity: 1;
+    transform: translateY(-2px) scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-chat-glow {
+  animation: chat-pulse-glow 3s infinite ease-in-out;
+}
+
+.animate-chat-sweep {
+  animation: chat-sweep 5s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-chat-wiggle {
+  animation: chat-badge-wiggle 3s infinite ease-in-out;
+}
+
+.animate-chat-pop {
+  animation: chat-bubble-pop 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}

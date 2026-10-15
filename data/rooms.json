@@ -1,0 +1,1144 @@
+[
+  {
+    "id": "room-0",
+    "roomNumber": "Room 0",
+    "title": "Room 0 – Big Family Room",
+    "subtitle": "Room 0 • 8 Pax • 4 Double Beds",
+    "category": "Big Family Rooms",
+    "roomNumbers": [
+      "Room 0"
+    ],
+    "capacity": {
+      "minGuests": 1,
+      "maxGuests": 8,
+      "recommended": "8 Pax"
+    },
+    "pricing": {
+      "nightly": 2000,
+      "hourly3hr": 800,
+      "hourly6hr": 1300,
+      "hourly12hr": 1800
+    },
+    "paxRates": [
+      {
+        "paxLabel": "1-5 pax",
+        "pax": 5,
+        "weekdayRate": 2000,
+        "weekendRate": 2200
+      },
+      {
+        "paxLabel": "6 pax",
+        "pax": 6,
+        "weekdayRate": 2400,
+        "weekendRate": 2550
+      },
+      {
+        "paxLabel": "7 pax",
+        "pax": 7,
+        "weekdayRate": 2550,
+        "weekendRate": 2750
+      },
+      {
+        "paxLabel": "8 pax",
+        "pax": 8,
+        "weekdayRate": 2700,
+        "weekendRate": 3000
+      },
+      {
+        "paxLabel": "9",
+        "pax": 9,
+        "weekdayRate": 2850,
+        "weekendRate": 3100
+      }
+    ],
+    "weekdayRateDisplay": "₱2,000 – ₱2,700",
+    "weekendRateDisplay": "₱2,200 – ₱3,000",
+    "beds": "4 Double Beds",
+    "sizeSqM": 45,
+    "description": "Spacious Big Family Room 0 located on the main floor. Equipped with powerful aircon, private CR with hot/cold shower, Wi-Fi, double lock doors, 24HR CCTV, pet-friendly accommodation, wide parking, and common kitchen access.",
+    "amenities": [
+      "Aircon",
+      "Private CR",
+      "Wi-Fi",
+      "Wide Parking Space",
+      "Kitchen (common)",
+      "Billard/Darts (100/hr)",
+      "CCTV 24HR",
+      "Pet Allowed",
+      "Double Lock Doors"
+    ],
+    "hasPool": false,
+    "images": [
+      "/uploads/room_cover_1790917625749_1_2030.jpg",
+      "/uploads/room_1790916505748_1_7629.jpg"
+    ],
+    "featured": true,
+    "extraPaxFee": 0,
+    "extraPadFee": 0
+  },
+  {
+    "id": "room-1",
+    "roomNumber": "Room 1",
+    "title": "Room 1 – Big Family Room",
+    "subtitle": "Room 1 • 8 - 10 Pax • 4 Double Beds",
+    "category": "Big Family Rooms",
+    "roomNumbers": [
+      "Room 1"
+    ],
+    "capacity": {
+      "minGuests": 1,
+      "maxGuests": 10,
+      "recommended": "8 - 10 Pax"
+    },
+    "pricing": {
+      "nightly": 2000,
+      "hourly3hr": 800,
+      "hourly6hr": 1300,
+      "hourly12hr": 1800
+    },
+    "paxRates": [
+      {
+        "paxLabel": "1-5 pax",
+        "pax": 5,
+        "weekdayRate": 2000,
+        "weekendRate": 2200
+      },
+      {
+        "paxLabel": "6 pax",
+        "pax": 6,
+        "weekdayRate": 2400,
+        "weekendRate": 2550
+      },
+      {
+        "paxLabel": "7 pax",
+        "pax": 7,
+        "weekdayRate": 2550,
+        "weekendRate": 2750
+      },
+      {
+        "paxLabel": "8 pax",
+        "pax": 8,
+        "weekdayRate": 2700,
+        "weekendRate": 3000
+      },
+      {
+        "paxLabel": "9 pax",
+        "pax": 9,
+        "weekdayRate": 2750,
+        "weekendRate": 3150
+      },
+      {
+        "paxLabel": "10 pax",
+        "pax": 10,
+        "weekdayRate": 3000,
+        "weekendRate": 3500
+      }
+    ],
+    "weekdayRateDisplay": "₱2,000 – ₱3,000",
+    "weekendRateDisplay": "₱2,200 – ₱3,500",
+    "beds": "4 Double Beds",
+    "sizeSqM": 45,
+    "description": "Generous Big Family Room 1 featuring breezy space, cold split-type aircon, private CR, high-speed Wi-Fi, 24HR CCTV security, pet allowed, and secure double lock doors. Convenient access to common kitchen and wide parking.",
+    "amenities": [
+      "Aircon",
+      "Private CR",
+      "Wi-Fi",
+      "Wide Parking Space",
+      "Kitchen (common)",
+      "Billard/Darts (100/hr)",
+      "CCTV 24HR",
+      "Pet Allowed",
+      "Double Lock Doors"
+    ],
+    "hasPool": false,
+    "images": [
+      "/uploads/room_1790918065103_2_4390.jpg",
+      "/uploads/room_1790918065102_1_6731.jpg",
+      "/uploads/room_1790918065104_3_3591.jpg"
+    ],
+    "featured": false
+  },
+  {
+    "id": "room-2",
+    "roomNumber": "Room 2",
+    "title": "Room 2 – Loft Type Family Room",
+    "subtitle": "Room 2 • 8 - 10 Pax",
+    "category": "Loft Family Suites",
+    "roomNumbers": [
+      "Room 2"
+    ],
+    "capacity": {
+      "minGuests": 1,
+      "maxGuests": 10,
+      "recommended": "8 - 10 Pax"
+    },
+    "pricing": {
+      "nightly": 2000,
+      "hourly3hr": 900,
+      "hourly6hr": 1500,
+      "hourly12hr": 2000
+    },
+    "paxRates": [
+      {
+        "paxLabel": "1-5 pax",
+        "pax": 5,
+        "weekdayRate": 2000,
+        "weekendRate": 2200
+      },
+      {
+        "paxLabel": "6 pax",
+        "pax": 6,
+        "weekdayRate": 2400,
+        "weekendRate": 2550
+      },
+      {
+        "paxLabel": "7 pax",
+        "pax": 7,
+        "weekdayRate": 2550,
+        "weekendRate": 2750
+      },
+      {
+        "paxLabel": "8 pax",
+        "pax": 8,
+        "weekdayRate": 2700,
+        "weekendRate": 3000
+      },
+      {
+        "paxLabel": "9 pax",
+        "pax": 9,
+        "weekdayRate": 2750,
+        "weekendRate": 3150
+      },
+      {
+        "paxLabel": "10 pax",
+        "pax": 10,
+        "weekdayRate": 3000,
+        "weekendRate": 3500
+      }
+    ],
+    "weekdayRateDisplay": "₱2,000 – ₱3,000",
+    "weekendRateDisplay": "₱2,200 – ₱3,500",
+    "beds": "4 Queen Beds (Ground & Mezzanine Loft) + 1 Daybed",
+    "sizeSqM": 52,
+    "description": "High-ceiling Loft Type Family Room 2 with a wooden mezzanine level accommodating up to 10 guests comfortably. Airconditioned, private CR, high-speed Wi-Fi, double lock security, 24HR CCTV, pet friendly, wide parking, and billiards/darts lounge access.",
+    "amenities": [
+      "Aircon",
+      "Private CR",
+      "Wi-Fi",
+      "Wide Parking Space",
+      "Kitchen (common)",
+      "Billard/Darts (100/hr)",
+      "CCTV 24HR",
+      "Pet Allowed",
+      "Double Lock Doors"
+    ],
+    "hasPool": false,
+    "images": [
+      "https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1540518614846-7ede433c4570?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1000&q=80"
+    ],
+    "featured": true,
+    "extraPaxFee": 301
+  },
+  {
+    "id": "room-3",
+    "roomNumber": "Room 3",
+    "title": "Room 3 – Loft Type Family Room",
+    "subtitle": "Room 3 • 8 - 10 Pax",
+    "category": "Loft Family Suites",
+    "roomNumbers": [
+      "Room 3"
+    ],
+    "capacity": {
+      "minGuests": 1,
+      "maxGuests": 10,
+      "recommended": "8 - 10 Pax"
+    },
+    "pricing": {
+      "nightly": 2000,
+      "hourly3hr": 900,
+      "hourly6hr": 1500,
+      "hourly12hr": 2000
+    },
+    "paxRates": [
+      {
+        "paxLabel": "1-5 pax",
+        "pax": 5,
+        "weekdayRate": 2000,
+        "weekendRate": 2200
+      },
+      {
+        "paxLabel": "6 pax",
+        "pax": 6,
+        "weekdayRate": 2400,
+        "weekendRate": 2550
+      },
+      {
+        "paxLabel": "7 pax",
+        "pax": 7,
+        "weekdayRate": 2550,
+        "weekendRate": 2750
+      },
+      {
+        "paxLabel": "8 pax",
+        "pax": 8,
+        "weekdayRate": 2700,
+        "weekendRate": 3000
+      },
+      {
+        "paxLabel": "9 pax",
+        "pax": 9,
+        "weekdayRate": 2750,
+        "weekendRate": 3150
+      },
+      {
+        "paxLabel": "10 pax",
+        "pax": 10,
+        "weekdayRate": 3000,
+        "weekendRate": 3500
+      }
+    ],
+    "weekdayRateDisplay": "₱2,000 – ₱3,000",
+    "weekendRateDisplay": "₱2,200 – ₱3,500",
+    "beds": "4 Queen Beds (Ground & Mezzanine Loft) + 1 Daybed",
+    "sizeSqM": 52,
+    "description": "Spacious bi-level Loft Type Family Room 3. Great for large tour groups and reunions. Split-type aircon, private CR with shower, Wi-Fi, wide parking space, common kitchen, billiards/darts access (100/hr), 24HR CCTV, and double lock doors.",
+    "amenities": [
+      "Aircon",
+      "Private CR",
+      "Wi-Fi",
+      "Wide Parking Space",
+      "Kitchen (common)",
+      "Billard/Darts (100/hr)",
+      "CCTV 24HR",
+      "Pet Allowed",
+      "Double Lock Doors"
+    ],
+    "hasPool": false,
+    "images": [
+      "https://images.unsplash.com/photo-1540518614846-7ede433c4570?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1000&q=80"
+    ],
+    "featured": false
+  },
+  {
+    "id": "room-4",
+    "roomNumber": "Room 4",
+    "title": "Room 4 – Family Room",
+    "subtitle": "Room 4 • 6 - 7 Pax • 1 Double Bed + 1 Double Deck",
+    "category": "Family Rooms",
+    "roomNumbers": [
+      "Room 4"
+    ],
+    "capacity": {
+      "minGuests": 1,
+      "maxGuests": 7,
+      "recommended": "6 - 7 Pax"
+    },
+    "pricing": {
+      "nightly": 900,
+      "hourly3hr": 450,
+      "hourly6hr": 750,
+      "hourly12hr": 950
+    },
+    "paxRates": [
+      {
+        "paxLabel": "1-2 pax",
+        "pax": 2,
+        "weekdayRate": 900,
+        "weekendRate": 1000
+      },
+      {
+        "paxLabel": "3-7 pax",
+        "pax": 7,
+        "weekdayRate": 1200,
+        "weekendRate": 1300
+      }
+    ],
+    "weekdayRateDisplay": "₱900 – ₱1,200",
+    "weekendRateDisplay": "₱1,000 – ₱1,300",
+    "beds": "1 Double Bed + 1 Double Size Double Deck",
+    "sizeSqM": 34,
+    "description": "Comfortable Family Room 4 accommodating up to 7 guests. Equipped with cold aircon, private CR, high-speed Wi-Fi, wide parking space, common kitchen privileges, 24HR CCTV, pet allowed, and double lock doors.",
+    "amenities": [
+      "Aircon",
+      "Private CR",
+      "Wi-Fi",
+      "Wide Parking Space",
+      "Kitchen (common)",
+      "Billard/Darts (100/hr)",
+      "CCTV 24HR",
+      "Pet Allowed",
+      "Double Lock Doors"
+    ],
+    "hasPool": false,
+    "images": [
+      "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1000&q=80"
+    ],
+    "featured": false
+  },
+  {
+    "id": "room-5",
+    "roomNumber": "Room 5",
+    "title": "Room 5 – Family Room",
+    "subtitle": "Room 5 • 6 - 7 Pax • 1 Double Bed + 1 Double Deck",
+    "category": "Family Rooms",
+    "roomNumbers": [
+      "Room 5"
+    ],
+    "capacity": {
+      "minGuests": 1,
+      "maxGuests": 7,
+      "recommended": "6 - 7 Pax"
+    },
+    "pricing": {
+      "nightly": 900,
+      "hourly3hr": 450,
+      "hourly6hr": 750,
+      "hourly12hr": 950
+    },
+    "paxRates": [
+      {
+        "paxLabel": "1-2 pax",
+        "pax": 2,
+        "weekdayRate": 900,
+        "weekendRate": 1000
+      },
+      {
+        "paxLabel": "3-7 pax",
+        "pax": 7,
+        "weekdayRate": 1200,
+        "weekendRate": 1300
+      }
+    ],
+    "weekdayRateDisplay": "₱900 – ₱1,200",
+    "weekendRateDisplay": "₱1,000 – ₱1,300",
+    "beds": "1 Double Bed + 1 Double Size Double Deck",
+    "sizeSqM": 34,
+    "description": "Cozy and serene Family Room 5 for up to 7 guests. Complete with split air conditioning, private CR with shower, fast Wi-Fi, double lock doors, 24HR CCTV security, pet-friendly environment, and common kitchen access.",
+    "amenities": [
+      "Aircon",
+      "Private CR",
+      "Wi-Fi",
+      "Wide Parking Space",
+      "Kitchen (common)",
+      "Billard/Darts (100/hr)",
+      "CCTV 24HR",
+      "Pet Allowed",
+      "Double Lock Doors"
+    ],
+    "hasPool": false,
+    "images": [
+      "https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1000&q=80"
+    ],
+    "featured": false
+  },
+  {
+    "id": "room-6",
+    "roomNumber": "Room 6",
+    "title": "Room 6 – Family Room",
+    "subtitle": "Room 6 • 6 - 7 Pax • 1 Double Bed + 1 Double Deck",
+    "category": "Family Rooms",
+    "roomNumbers": [
+      "Room 6"
+    ],
+    "capacity": {
+      "minGuests": 1,
+      "maxGuests": 7,
+      "recommended": "6 - 7 Pax"
+    },
+    "pricing": {
+      "nightly": 900,
+      "hourly3hr": 450,
+      "hourly6hr": 750,
+      "hourly12hr": 950
+    },
+    "paxRates": [
+      {
+        "paxLabel": "1-2 pax",
+        "pax": 2,
+        "weekdayRate": 900,
+        "weekendRate": 1000
+      },
+      {
+        "paxLabel": "3-7 pax",
+        "pax": 7,
+        "weekdayRate": 1200,
+        "weekendRate": 1300
+      }
+    ],
+    "weekdayRateDisplay": "₱900 – ₱1,200",
+    "weekendRateDisplay": "₱1,000 – ₱1,300",
+    "beds": "1 Double Bed + 1 Double Size Double Deck",
+    "sizeSqM": 34,
+    "description": "Room 6 offers relaxing family lodging with quiet surroundings. Aircon, private CR, Wi-Fi, wide parking space, common kitchen, billiards/darts (100/hr), 24HR CCTV, pet allowed, and double lock doors.",
+    "amenities": [
+      "Aircon",
+      "Private CR",
+      "Wi-Fi",
+      "Wide Parking Space",
+      "Kitchen (common)",
+      "Billard/Darts (100/hr)",
+      "CCTV 24HR",
+      "Pet Allowed",
+      "Double Lock Doors"
+    ],
+    "hasPool": false,
+    "images": [
+      "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=1000&q=80"
+    ],
+    "featured": false
+  },
+  {
+    "id": "room-7",
+    "roomNumber": "Room 7",
+    "title": "Room 7 – Small Loft Type Family",
+    "subtitle": "Room 7 • 8 Pax",
+    "category": "Loft Family Suites",
+    "roomNumbers": [
+      "Room 7"
+    ],
+    "capacity": {
+      "minGuests": 1,
+      "maxGuests": 8,
+      "recommended": "8 Pax"
+    },
+    "pricing": {
+      "nightly": 2000,
+      "hourly3hr": 800,
+      "hourly6hr": 1300,
+      "hourly12hr": 1800
+    },
+    "paxRates": [
+      {
+        "paxLabel": "1-5 pax",
+        "pax": 5,
+        "weekdayRate": 2000,
+        "weekendRate": 2200
+      },
+      {
+        "paxLabel": "6 pax",
+        "pax": 6,
+        "weekdayRate": 2400,
+        "weekendRate": 2550
+      },
+      {
+        "paxLabel": "7 pax",
+        "pax": 7,
+        "weekdayRate": 2550,
+        "weekendRate": 2750
+      },
+      {
+        "paxLabel": "8 pax",
+        "pax": 8,
+        "weekdayRate": 2700,
+        "weekendRate": 3000
+      }
+    ],
+    "weekdayRateDisplay": "₱2,000 – ₱2,700",
+    "weekendRateDisplay": "₱2,200 – ₱3,000",
+    "beds": "3 Queen Beds (Ground & Cozy Loft)",
+    "sizeSqM": 38,
+    "description": "Charming mezzanine loft unit in Room 7 accommodating up to 8 guests. Quiet ambiance, private CR, split aircon, 24/7 CCTV, pet friendly, double lock doors, common kitchen privileges, and wide parking.",
+    "amenities": [
+      "Aircon",
+      "Private CR",
+      "Wi-Fi",
+      "Wide Parking Space",
+      "Kitchen (common)",
+      "Billard/Darts (100/hr)",
+      "CCTV 24HR",
+      "Pet Allowed",
+      "Double Lock Doors"
+    ],
+    "hasPool": false,
+    "images": [
+      "https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=1000&q=80"
+    ],
+    "featured": false
+  },
+  {
+    "id": "room-8",
+    "roomNumber": "Room 8",
+    "title": "Room 8 – Standard Room",
+    "subtitle": "Room 8 • 3 Pax • 1 Double Bed",
+    "category": "Standard Rooms",
+    "roomNumbers": [
+      "Room 8"
+    ],
+    "capacity": {
+      "minGuests": 1,
+      "maxGuests": 3,
+      "recommended": "3 Pax"
+    },
+    "pricing": {
+      "nightly": 900,
+      "hourly3hr": 400,
+      "hourly6hr": 650,
+      "hourly12hr": 850
+    },
+    "paxRates": [
+      {
+        "paxLabel": "1-2 pax",
+        "pax": 2,
+        "weekdayRate": 900,
+        "weekendRate": 1000
+      },
+      {
+        "paxLabel": "1-3 pax",
+        "pax": 3,
+        "weekdayRate": 1200,
+        "weekendRate": 1300
+      }
+    ],
+    "weekdayRateDisplay": "₱900 – ₱1,200",
+    "weekendRateDisplay": "₱1,000 – ₱1,300",
+    "beds": "1 Double Bed",
+    "sizeSqM": 22,
+    "description": "Practical and budget-friendly Standard Room 8 for couples or small families up to 3 guests. Features cold air conditioning, private CR with shower, high-speed Wi-Fi, wide parking space, common kitchen, 24HR CCTV, and double lock doors.",
+    "amenities": [
+      "Aircon",
+      "Private CR",
+      "Wi-Fi",
+      "Wide Parking Space",
+      "Kitchen (common)",
+      "Billard/Darts (100/hr)",
+      "CCTV 24HR",
+      "Pet Allowed",
+      "Double Lock Doors"
+    ],
+    "hasPool": false,
+    "images": [
+      "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1000&q=80"
+    ],
+    "featured": false
+  },
+  {
+    "id": "room-9",
+    "roomNumber": "Room 9",
+    "title": "Room 9 – Standard Room",
+    "subtitle": "Room 9 • 3 Pax • 1 Double Bed",
+    "category": "Standard Rooms",
+    "roomNumbers": [
+      "Room 9"
+    ],
+    "capacity": {
+      "minGuests": 1,
+      "maxGuests": 3,
+      "recommended": "3 Pax"
+    },
+    "pricing": {
+      "nightly": 900,
+      "hourly3hr": 400,
+      "hourly6hr": 650,
+      "hourly12hr": 850
+    },
+    "paxRates": [
+      {
+        "paxLabel": "1-2 pax",
+        "pax": 2,
+        "weekdayRate": 900,
+        "weekendRate": 1000
+      },
+      {
+        "paxLabel": "1-3 pax",
+        "pax": 3,
+        "weekdayRate": 1200,
+        "weekendRate": 1300
+      }
+    ],
+    "weekdayRateDisplay": "₱900 – ₱1,200",
+    "weekendRateDisplay": "₱1,000 – ₱1,300",
+    "beds": "1 Double Bed",
+    "sizeSqM": 22,
+    "description": "Neat and clean Standard Room 9 for up to 3 guests. Aircon, private CR, high-speed Wi-Fi, wide parking, common kitchen access, 24HR CCTV, pet friendly, and double lock security.",
+    "amenities": [
+      "Aircon",
+      "Private CR",
+      "Wi-Fi",
+      "Wide Parking Space",
+      "Kitchen (common)",
+      "Billard/Darts (100/hr)",
+      "CCTV 24HR",
+      "Pet Allowed",
+      "Double Lock Doors"
+    ],
+    "hasPool": false,
+    "images": [
+      "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=1000&q=80"
+    ],
+    "featured": false
+  },
+  {
+    "id": "room-10",
+    "roomNumber": "Room 10",
+    "title": "Room 10 – Standard Room",
+    "subtitle": "Room 10 • 3 Pax • 1 Double Bed",
+    "category": "Standard Rooms",
+    "roomNumbers": [
+      "Room 10"
+    ],
+    "capacity": {
+      "minGuests": 1,
+      "maxGuests": 3,
+      "recommended": "3 Pax"
+    },
+    "pricing": {
+      "nightly": 900,
+      "hourly3hr": 400,
+      "hourly6hr": 650,
+      "hourly12hr": 850
+    },
+    "paxRates": [
+      {
+        "paxLabel": "1-2 pax",
+        "pax": 2,
+        "weekdayRate": 900,
+        "weekendRate": 1000
+      },
+      {
+        "paxLabel": "1-3 pax",
+        "pax": 3,
+        "weekdayRate": 1200,
+        "weekendRate": 1300
+      }
+    ],
+    "weekdayRateDisplay": "₱900 – ₱1,200",
+    "weekendRateDisplay": "₱1,000 – ₱1,300",
+    "beds": "1 Double Bed",
+    "sizeSqM": 22,
+    "description": "Standard Room 10 provides a peaceful overnight stay in Vigan. Equipped with split aircon, private CR with shower, fast Wi-Fi, wide parking space, 24HR CCTV monitoring, pet friendly, and double lock doors.",
+    "amenities": [
+      "Aircon",
+      "Private CR",
+      "Wi-Fi",
+      "Wide Parking Space",
+      "Kitchen (common)",
+      "Billard/Darts (100/hr)",
+      "CCTV 24HR",
+      "Pet Allowed",
+      "Double Lock Doors"
+    ],
+    "hasPool": false,
+    "images": [
+      "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=1000&q=80"
+    ],
+    "featured": false
+  },
+  {
+    "id": "room-11",
+    "roomNumber": "Room 11",
+    "title": "Room 11 – Standard Room",
+    "subtitle": "Room 11 • 2 Pax • 1 Double Bed",
+    "category": "Standard Rooms",
+    "roomNumbers": [
+      "Room 11"
+    ],
+    "capacity": {
+      "minGuests": 1,
+      "maxGuests": 2,
+      "recommended": "2 Pax"
+    },
+    "pricing": {
+      "nightly": 900,
+      "hourly3hr": 400,
+      "hourly6hr": 650,
+      "hourly12hr": 850
+    },
+    "paxRates": [
+      {
+        "paxLabel": "1-2 pax",
+        "pax": 2,
+        "weekdayRate": 900,
+        "weekendRate": 1000
+      }
+    ],
+    "weekdayRateDisplay": "₱900",
+    "weekendRateDisplay": "₱1,000",
+    "beds": "1 Double Bed",
+    "sizeSqM": 22,
+    "description": "Cozy Room 11 ideal for budget travelers, business guests, or small families. Aircon, private CR, Wi-Fi, parking, common kitchen privileges, billiards/darts access (100/hr), 24HR CCTV, and double lock security.",
+    "amenities": [
+      "Aircon",
+      "Private CR",
+      "Wi-Fi",
+      "Wide Parking Space",
+      "Kitchen (common)",
+      "Billard/Darts (100/hr)",
+      "CCTV 24HR",
+      "Pet Allowed",
+      "Double Lock Doors"
+    ],
+    "hasPool": false,
+    "images": [
+      "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=1000&q=80"
+    ],
+    "featured": false
+  },
+  {
+    "id": "room-18",
+    "roomNumber": "Room 18",
+    "title": "Room 18 – Big Family Room",
+    "subtitle": "Room 18 • 8 Pax • 4 Double Beds",
+    "category": "Big Family Rooms",
+    "roomNumbers": [
+      "Room 18"
+    ],
+    "capacity": {
+      "minGuests": 1,
+      "maxGuests": 8,
+      "recommended": "8 Pax"
+    },
+    "pricing": {
+      "nightly": 2000,
+      "hourly3hr": 800,
+      "hourly6hr": 1300,
+      "hourly12hr": 1800
+    },
+    "paxRates": [
+      {
+        "paxLabel": "1-5 pax",
+        "pax": 5,
+        "weekdayRate": 2000,
+        "weekendRate": 2200
+      },
+      {
+        "paxLabel": "6 pax",
+        "pax": 6,
+        "weekdayRate": 2400,
+        "weekendRate": 2550
+      },
+      {
+        "paxLabel": "7 pax",
+        "pax": 7,
+        "weekdayRate": 2550,
+        "weekendRate": 2750
+      },
+      {
+        "paxLabel": "8 pax",
+        "pax": 8,
+        "weekdayRate": 2700,
+        "weekendRate": 3000
+      },
+      {
+        "paxLabel": "9",
+        "pax": 9,
+        "weekdayRate": 2850,
+        "weekendRate": 3100
+      }
+    ],
+    "weekdayRateDisplay": "₱2,000 – ₱2,700",
+    "weekendRateDisplay": "₱2,200 – ₱3,000",
+    "beds": "4 Double Beds",
+    "sizeSqM": 45,
+    "description": "Spacious Big Family Room 18 located on the main floor. Equipped with powerful aircon, private CR with hot/cold shower, Wi-Fi, double lock doors, 24HR CCTV, pet-friendly accommodation, wide parking, and common kitchen access.",
+    "amenities": [
+      "Aircon",
+      "Private CR",
+      "Wi-Fi",
+      "Wide Parking Space",
+      "Kitchen (common)",
+      "Billard/Darts (100/hr)",
+      "CCTV 24HR",
+      "Pet Allowed",
+      "Double Lock Doors"
+    ],
+    "hasPool": false,
+    "images": [
+      "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=1000&q=80"
+    ],
+    "featured": false
+  },
+  {
+    "id": "room-14",
+    "roomNumber": "Room 14",
+    "title": "Room 14 – Family Room",
+    "subtitle": "Room 14 • 4 - 5 Pax • 2 Double Size Beds",
+    "category": "Family Rooms",
+    "roomNumbers": [
+      "Room 14"
+    ],
+    "capacity": {
+      "minGuests": 1,
+      "maxGuests": 5,
+      "recommended": "4 - 5 Pax"
+    },
+    "pricing": {
+      "nightly": 1000,
+      "hourly3hr": 500,
+      "hourly6hr": 800,
+      "hourly12hr": 1100
+    },
+    "paxRates": [
+      {
+        "paxLabel": "1-2 pax",
+        "pax": 2,
+        "weekdayRate": 1000,
+        "weekendRate": 1000
+      },
+      {
+        "paxLabel": "3",
+        "pax": 3,
+        "weekdayRate": 1200,
+        "weekendRate": 1300
+      },
+      {
+        "paxLabel": "4",
+        "pax": 4,
+        "weekdayRate": 1400,
+        "weekendRate": 1600
+      },
+      {
+        "paxLabel": "5",
+        "pax": 5,
+        "weekdayRate": 1500,
+        "weekendRate": 1800
+      }
+    ],
+    "weekdayRateDisplay": "₱1,000 – ₱1,400",
+    "weekendRateDisplay": "₱1,200 – ₱1,600",
+    "beds": "2 Double Size Beds",
+    "sizeSqM": 32,
+    "description": "Warm and comfortable Family Room 14 accommodating up to 6 guests. Features cold air conditioning, private CR with shower, high-speed Wi-Fi, double lock doors, 24HR CCTV security, pet allowed, and common kitchen access.",
+    "amenities": [
+      "Aircon",
+      "Private CR",
+      "Wi-Fi",
+      "Wide Parking Space",
+      "Kitchen (common)",
+      "Billard/Darts (100/hr)",
+      "CCTV 24HR",
+      "Pet Allowed",
+      "Double Lock Doors"
+    ],
+    "hasPool": false,
+    "images": [
+      "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=1000&q=80"
+    ],
+    "featured": true
+  },
+  {
+    "id": "room-15",
+    "roomNumber": "Room 15",
+    "title": "Room 15 – Family Room",
+    "subtitle": "Room 15 • 4 - 5 Pax • 2 Double Size Beds",
+    "category": "Family Rooms",
+    "roomNumbers": [
+      "Room 15"
+    ],
+    "capacity": {
+      "minGuests": 1,
+      "maxGuests": 5,
+      "recommended": "4 - 5 Pax"
+    },
+    "pricing": {
+      "nightly": 1000,
+      "hourly3hr": 500,
+      "hourly6hr": 800,
+      "hourly12hr": 1100
+    },
+    "paxRates": [
+      {
+        "paxLabel": "1-2 pax",
+        "pax": 2,
+        "weekdayRate": 1000,
+        "weekendRate": 1000
+      },
+      {
+        "paxLabel": "3",
+        "pax": 3,
+        "weekdayRate": 1200,
+        "weekendRate": 1300
+      },
+      {
+        "paxLabel": "4",
+        "pax": 4,
+        "weekdayRate": 1400,
+        "weekendRate": 1600
+      },
+      {
+        "paxLabel": "5",
+        "pax": 5,
+        "weekdayRate": 1500,
+        "weekendRate": 1800
+      }
+    ],
+    "weekdayRateDisplay": "₱1,000 – ₱1,400",
+    "weekendRateDisplay": "₱1,200 – ₱1,600",
+    "beds": "2 Double Size Beds",
+    "sizeSqM": 32,
+    "description": "Family Room 15 offers a restful home base for touring Vigan City. Split-type aircon, private CR, high-speed Wi-Fi, wide parking space, common kitchen, billiards/darts (100/hr), 24HR CCTV, and double lock doors.",
+    "amenities": [
+      "Aircon",
+      "Private CR",
+      "Wi-Fi",
+      "Wide Parking Space",
+      "Kitchen (common)",
+      "Billard/Darts (100/hr)",
+      "CCTV 24HR",
+      "Pet Allowed",
+      "Double Lock Doors"
+    ],
+    "hasPool": false,
+    "images": [
+      "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=1000&q=80"
+    ],
+    "featured": false
+  },
+  {
+    "id": "room-16",
+    "roomNumber": "Room 16",
+    "title": "Room 16 – Family Room",
+    "subtitle": "Room 16 • 4 - 5 Pax • 2 Double Size Beds",
+    "category": "Family Rooms",
+    "roomNumbers": [
+      "Room 16"
+    ],
+    "capacity": {
+      "minGuests": 1,
+      "maxGuests": 5,
+      "recommended": "4 - 5 Pax"
+    },
+    "pricing": {
+      "nightly": 1000,
+      "hourly3hr": 500,
+      "hourly6hr": 800,
+      "hourly12hr": 1100
+    },
+    "paxRates": [
+      {
+        "paxLabel": "1-2 pax",
+        "pax": 2,
+        "weekdayRate": 1000,
+        "weekendRate": 1000
+      },
+      {
+        "paxLabel": "3",
+        "pax": 3,
+        "weekdayRate": 1200,
+        "weekendRate": 1300
+      },
+      {
+        "paxLabel": "4",
+        "pax": 4,
+        "weekdayRate": 1400,
+        "weekendRate": 1600
+      },
+      {
+        "paxLabel": "5",
+        "pax": 5,
+        "weekdayRate": 1500,
+        "weekendRate": 1800
+      }
+    ],
+    "weekdayRateDisplay": "₱1,000 – ₱1,400",
+    "weekendRateDisplay": "₱1,200 – ₱1,600",
+    "beds": "2 Double Size Beds",
+    "sizeSqM": 32,
+    "description": "Family Room 16 accommodates up to 6 guests with great comfort. Aircon, private CR with shower, Wi-Fi, wide parking space, 24HR CCTV, pet friendly, double lock doors, and shared kitchen privileges.",
+    "amenities": [
+      "Aircon",
+      "Private CR",
+      "Wi-Fi",
+      "Wide Parking Space",
+      "Kitchen (common)",
+      "Billard/Darts (100/hr)",
+      "CCTV 24HR",
+      "Pet Allowed",
+      "Double Lock Doors"
+    ],
+    "hasPool": false,
+    "images": [
+      "https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1000&q=80"
+    ],
+    "featured": false
+  },
+  {
+    "id": "private-villa-pool",
+    "roomNumber": "Private Villa",
+    "title": "Private Villa (with Swimming Pool)",
+    "subtitle": "Exclusive Villa with Pool • 10 - 20 Pax",
+    "category": "Private Villa",
+    "roomNumbers": [
+      "Private Villa"
+    ],
+    "capacity": {
+      "minGuests": 10,
+      "maxGuests": 20,
+      "recommended": "10 - 20 Pax"
+    },
+    "pricing": {
+      "nightly": 7000,
+      "hourly3hr": 3000,
+      "hourly6hr": 4500,
+      "hourly12hr": 6000
+    },
+    "paxRates": [
+      {
+        "paxLabel": "1 to 10 pax",
+        "pax": 10,
+        "weekdayRate": 8000,
+        "weekendRate": 10000
+      }
+    ],
+    "extraPaxFee": 500,
+    "extraPadFee": 400,
+    "weekdayRateDisplay": "₱8,000",
+    "weekendRateDisplay": "₱10,000",
+    "beds": "1st Room: 1 Queen Bed, 1 Pull Out Bed | 2nd Room: 1 Double Bed, 1 Double Size Double Deck | 3rd Room: 2 Double Bed, 1 Pull Out Bed",
+    "sizeSqM": 320,
+    "description": "Exclusive private villa getaway with dedicated private swimming pool access for your group of up to 20 guests. Complete with aircon bedrooms, private CRs, high-speed Wi-Fi, wide parking space, kitchen, billiards/darts (100/hr), 24HR CCTV security, pet allowed, and double lock doors.",
+    "amenities": [
+      "All Rooms With Aircon",
+      "Private CR",
+      "Living Room",
+      "Dining Area",
+      "Kitchen",
+      "Gazabo",
+      "Private Swimming Pool (4-5ft depth)",
+      "Outdoor Shower Room",
+      "Wide Parking Area",
+      "Chiller",
+      "Water Dispenser",
+      "Stoves",
+      "Kettle",
+      "Extra Efans",
+      "Toiletries, Towels, Bedsheets & Pillows",
+      "Entertainment: Mini Billiards, Cards, Table Games",
+      "Outdoor: Playground, Billiards, Darts"
+    ],
+    "hasPool": true,
+    "images": [
+      "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1540518614846-7ede433c4570?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1000&q=80"
+    ],
+    "featured": true
+  }
+]

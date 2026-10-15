@@ -1,0 +1,42 @@
+[
+  {
+    "id": "REV-1001",
+    "roomId": "room-14",
+    "roomTitle": "Room 14 – Family Room",
+    "guestName": "Kristine Mendoza",
+    "guestEmail": "kristine.mendoza@gmail.com",
+    "rating": 5,
+    "comment": "Super clean and spacious family room! The aircon is very cold and parking is right in front. Will definitely stay here again when in Vigan.",
+    "status": "approved",
+    "createdAt": "2026-10-12T12:48:33.846Z",
+    "stayDate": "October 2026",
+    "screenedAt": "2026-10-13T12:48:33.846Z",
+    "screenedBy": "Front Desk Admin"
+  },
+  {
+    "id": "REV-1002",
+    "roomId": "private-villa-pool",
+    "roomTitle": "Private Villa (with Swimming Pool)",
+    "guestName": "Mark Anthony Ramos",
+    "guestEmail": "mark.ramos@gmail.com",
+    "rating": 5,
+    "comment": "The private swimming pool is pristine and perfect for our reunion! Very peaceful ambiance and only 5 mins away from Calle Crisologo.",
+    "status": "approved",
+    "createdAt": "2026-10-10T12:48:33.846Z",
+    "stayDate": "October 2026",
+    "screenedAt": "2026-10-11T12:48:33.846Z",
+    "screenedBy": "Front Desk Admin"
+  },
+  {
+    "id": "REV-1003",
+    "roomId": "room-8",
+    "roomTitle": "Room 8 – Standard Double Room",
+    "guestName": "Jayson Valdez",
+    "guestEmail": "jayson.valdez@yahoo.com",
+    "rating": 5,
+    "comment": "Great value for money. Very quiet location along Diversion Road with reliable Wi-Fi and 24-hr security CCTV.",
+    "status": "pending",
+    "createdAt": "2026-10-15T06:48:33.846Z",
+    "stayDate": "October 2026"
+  }
+]

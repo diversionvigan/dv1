@@ -1,0 +1,208 @@
+<svg width="400" height="400" viewBox="22 14 196 196" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Multi-stop 3D Brushed Rose Gold Metallic Gradient -->
+    <linearGradient id="roseGoldBrush" x1="20" y1="20" x2="220" y2="220" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stopColor="#FBF0EC" />
+      <stop offset="12%" stopColor="#EABCAE" />
+      <stop offset="35%" stopColor="#D89E8E" />
+      <stop offset="55%" stopColor="#C28273" />
+      <stop offset="75%" stopColor="#E4ACA0" />
+      <stop offset="90%" stopColor="#AA6758" />
+      <stop offset="100%" stopColor="#7E4537" />
+    </linearGradient>
+
+    <!-- Center Monogram Emphasized Highlight Gradient -->
+    <linearGradient id="monogramGleam" x1="40" y1="60" x2="200" y2="200" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stopColor="#FFF4F0" />
+      <stop offset="18%" stopColor="#F0C3B6" />
+      <stop offset="40%" stopColor="#DE9F90" />
+      <stop offset="65%" stopColor="#C48070" />
+      <stop offset="85%" stopColor="#EBB3A7" />
+      <stop offset="100%" stopColor="#8A4E40" />
+    </linearGradient>
+
+    <!-- Bevel Specular Top-Left Highlight -->
+    <linearGradient id="bevelLight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.85" />
+      <stop offset="35%" stopColor="#FBE0D7" stopOpacity="0.5" />
+      <stop offset="100%" stopColor="#7A3F32" stopOpacity="0.05" />
+    </linearGradient>
+
+    <!-- Inner Bevel Shadow -->
+    <linearGradient id="bevelShadow" x1="100%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stopColor="#3D170F" stopOpacity="0.7" />
+      <stop offset="60%" stopColor="#7D3B2C" stopOpacity="0.25" />
+      <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0" />
+    </linearGradient>
+
+    <!-- Subtle Drop Shadow Filter -->
+    <filter id="logoGlow" x="-15%" y="-15%" width="130%" height="135%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="3.5" stdDeviation="4" flood-color="#32140D" flood-opacity="0.3" />
+      <feDropShadow dx="0" dy="1" stdDeviation="1.2" flood-color="#000000" flood-opacity="0.18" />
+    </filter>
+
+    <!-- Core Center Monogram Depth Shadow -->
+    <filter id="monogramDepth" x="-20%" y="-20%" width="140%" height="140%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0.5" dy="2" stdDeviation="2.5" flood-color="#2E120B" flood-opacity="0.35" />
+    </filter>
+  </defs>
+
+  <g filter="url(#logoGlow)">
+    <!-- 3D Bevel Shadow Underlay -->
+    <path
+      d="M 120 23.5
+         L 186 69.5
+         C 192 73.5 195 78.5 195 86
+         L 195 116
+         L 204 118.5
+         C 207 119.5 208.5 122 208.5 125
+         L 208.5 145
+         C 208.5 148 207 150.5 204 151.5
+         L 195 154
+         L 195 186
+         C 195 198 186 207.5 174 207.5
+         L 66 207.5
+         C 54 207.5 45 198 45 186
+         L 45 154
+         L 36 151.5
+         C 33 150.5 31.5 148 31.5 145
+         L 31.5 125
+         C 31.5 122 33 119.5 36 118.5
+         L 45 116
+         L 45 86
+         C 45 78.5 48 73.5 54 69.5
+         Z"
+      fill="url(#bevelShadow)"
+      opacity="0.8"
+      transform="translate(1, 1.5)"
+    />
+
+    <!-- Main Outer House Structure with Side Ears -->
+    <path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M 120 23
+         L 186 69
+         C 192 73 195 78 195 85
+         L 195 115
+         L 203.5 117.5
+         C 206.5 118.5 208 121 208 124
+         L 208 144
+         C 208 147 206.5 149.5 203.5 150.5
+         L 195 153
+         L 195 185
+         C 195 197 186 206 174 206
+         L 66 206
+         C 54 206 45 197 45 185
+         L 45 153
+         L 36.5 150.5
+         C 33.5 149.5 32 147 32 144
+         L 32 124
+         C 32 121 33.5 118.5 36.5 117.5
+         L 45 115
+         L 45 85
+         C 45 78 48 73 54 69
+         Z
+         M 120 37
+         L 61 78.5
+         C 58 80.5 56 83.5 56 87.5
+         L 56 183
+         C 56 190.5 61.5 196 69 196
+         L 171 196
+         C 178.5 196 184 190.5 184 183
+         L 184 87.5
+         C 184 83.5 182 80.5 179 78.5
+         Z"
+      fill="url(#roseGoldBrush)"
+    />
+
+    <!-- Top Highlight Sheen on House Rim -->
+    <path
+      d="M 120 23
+         L 186 69
+         C 192 73 195 78 195 85
+         L 195 115
+         M 54 69
+         L 120 23"
+      stroke="url(#bevelLight)"
+      strokeWidth="1.5"
+      fill="none"
+    />
+
+    <!-- EMPHASIZED CENTER SHAPE: dP MONOGRAM GROUP -->
+    <g filter="url(#monogramDepth)">
+      <!-- Central Vertical Stem Pillar (Emphasized width & presence) -->
+      <rect
+        x="113"
+        y="78"
+        width="14"
+        height="114"
+        rx="2"
+        fill="url(#monogramGleam)"
+      />
+      <!-- Specular Highlight Line on Stem -->
+      <line
+        x1="114"
+        y1="79"
+        x2="114"
+        y2="191"
+        stroke="#FFFFFF"
+        strokeWidth="1.2"
+        strokeOpacity="0.85"
+      />
+
+      <!-- 'P' Loop (Upper Right Monogram - Bold & Emphasized) -->
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M 127 78
+           L 165 78
+           C 190 78 201 89.5 201 112
+           C 201 134.5 190 146 165 146
+           L 127 146
+           Z
+           M 127 89
+           L 162 89
+           C 178.5 89 187.5 97 187.5 112
+           C 187.5 127 178.5 135 162 135
+           L 127 135
+           Z"
+        fill="url(#monogramGleam)"
+      />
+      <!-- Top Arc Highlight on P -->
+      <path
+        d="M 127 79 L 165 79 C 189 79 199.5 90 199.5 111.5"
+        stroke="#FFFFFF"
+        strokeWidth="1.4"
+        strokeOpacity="0.85"
+        fill="none"
+      />
+
+      <!-- 'C' / 'd' Crescent Loop (Lower Left Monogram - Bold & Emphasized) -->
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M 113 138
+           L 75 138
+           C 50 138 39 149.5 39 172
+           C 39 194.5 50 206 75 206
+           L 113 206
+           L 113 195
+           L 78 195
+           C 61.5 195 52.5 187 52.5 172
+           C 52.5 157 61.5 149 78 149
+           L 113 149
+           Z"
+        fill="url(#monogramGleam)"
+      />
+      <!-- Specular Arc on C/d Inner Shelf -->
+      <path
+        d="M 113 139 L 75 139 C 51 139 40.5 150 40.5 172"
+        stroke="#FFFFFF"
+        strokeWidth="1.4"
+        strokeOpacity="0.85"
+        fill="none"
+      />
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,22 @@
+name: Deploy to Hostinger VPS
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v5
+
+      - name: Deploy to Hostinger
+        uses: hostinger/deploy-on-vps@v2
+        with:
+          api-key: ${{ secrets.oHmP4XBdoltbmMX9AJUWZRv4GjknriUB9SpANB4O2e1295dd }}
+          virtual-machine: ${{ vars.1994368 }}
+          project-name: dv1git
+          docker-compose-path: docker-compose.yml

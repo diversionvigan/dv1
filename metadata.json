@@ -1,0 +1,8 @@
+{
+  "name": "Remix Main - Diversion Vigan ",
+  "description": "Transient and Private Villa Room Booking \u0026 Front-Desk Management System in Vigan City.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
