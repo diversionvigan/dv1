@@ -34,8 +34,8 @@ COPY --from=builder /app/public ./public
 COPY --from=builder /app/data ./data
 COPY --from=builder /app/tsconfig.json ./tsconfig.json
 
-# Pre-create data and uploads directories with permissions
-RUN mkdir -p /app/data /app/public/uploads && chown -R node:node /app
+# Pre-create data and uploads directories and ensure correct user ownership
+RUN mkdir -p /app/data /app/public/uploads && chown -R node:node /app/data /app/public/uploads /app
 
 USER node
 
