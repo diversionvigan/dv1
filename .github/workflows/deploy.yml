@@ -1,66 +1,26 @@
-name: Deploy dv1git to Hostinger VPS
+name: Deploy to Hostinger VPS
 
 on:
   push:
-    branches:
-      - main
-  workflow_dispatch:
+    branches: [ main ]
 
 jobs:
   deploy:
-    name: Deploy to VPS via SSH
     runs-on: ubuntu-latest
-
     steps:
-      - name: Check out repository
+      - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Deploy to Hostinger VPS via SSH
-        uses: appleboy/ssh-action@v1.2.0
+      - name: Deploy to VPS via SSH
+        uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER || 'root' }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          username: ${{ secrets.SSH_USER }}
           password: ${{ secrets.SSH_PASSWORD }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT || 22 }}
-          script_stop: true
           script: |
-            echo "🚀 Starting deployment on Hostinger VPS..."
-            
-            # Navigate to dv1git project folder (supports /var/www, /opt, or home)
-            if [ -d "/var/www/dv1git" ]; then
-              cd /var/www/dv1git
-            elif [ -d "/opt/dv1git" ]; then
-              cd /opt/dv1git
-            elif [ -d "$HOME/dv1git" ]; then
-              cd "$HOME/dv1git"
-            elif [ -d "/root/dv1git" ]; then
-              cd /root/dv1git
-            else
-              echo "Target dv1git directory not found in /var/www, /opt, or home directory."
-              exit 1
-            fi
-
-            echo "📥 Pulling latest changes from main branch..."
-            git reset --hard
+            cd /var/www/dv1git || cd /opt/dv1git || cd ~/dv1git || echo "Directory not found, please ensure repo is cloned at /var/www/dv1git"
             git pull origin main
-
-            echo "⚙️ Checking persistent directories..."
-            mkdir -p data public/uploads
-            if [ ! -f .env ]; then
-              cp .env.example .env
-            fi
-
-            echo "🐳 Rebuilding and starting Docker container..."
-            if command -v docker-compose &> /dev/null; then
-              docker-compose down || true
-              docker-compose up -d --build --remove-orphans
-            else
-              docker compose down || true
-              docker compose up -d --build --remove-orphans
-            fi
-
-            echo "🧹 Cleaning up dangling Docker images..."
+            docker compose up -d --build
             docker image prune -f
-
-            echo "✅ Deployment finished successfully! Running on port 3000."

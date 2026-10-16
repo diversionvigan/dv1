@@ -37,7 +37,9 @@ function readJsonFile<T>(filePath: string, fallback: T): T {
 
 function writeJsonFile<T>(filePath: string, data: T): void {
   try {
-    fs.writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf-8');
+    const tempPath = filePath + '.tmp';
+    fs.writeFileSync(tempPath, JSON.stringify(data, null, 2), 'utf-8');
+    fs.renameSync(tempPath, filePath);
   } catch (err) {
     console.error(`Error writing ${filePath}:`, err);
   }
