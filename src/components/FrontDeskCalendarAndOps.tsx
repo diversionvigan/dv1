@@ -223,7 +223,7 @@ export const FrontDeskCalendarAndOps: React.FC<FrontDeskCalendarAndOpsProps> = (
         return b.hourlyDate === dStr;
       }
       if (b.checkInDate && b.checkOutDate) {
-        return dStr >= b.checkInDate && dStr <= b.checkOutDate;
+        return dStr === b.checkInDate;
       }
       return false;
     });
@@ -711,31 +711,25 @@ export const FrontDeskCalendarAndOps: React.FC<FrontDeskCalendarAndOpsProps> = (
                           const isConfirmed = booking.status === 'Confirmed' || booking.status === 'Checked-In';
                           const isPending = booking.status === 'Pending Slip Review';
                           const isCheckIn = booking.checkInDate === dateStr;
-                          const isCheckOut = booking.checkOutDate === dateStr;
 
                           return (
                             <td
                               key={idx}
                               onClick={() => setSelectedBookingModal(booking)}
                               className={`p-1 text-center cursor-pointer transition-all hover:scale-105 hover:ring-2 hover:ring-amber-400 hover:z-10 relative select-none ${
-                                isCheckIn && isCheckOut
-                                  ? 'bg-gradient-to-r from-emerald-600 via-amber-500 to-emerald-600 text-white font-bold shadow-xs ring-1 ring-amber-300'
-                                  : isCheckIn
+                                isCheckIn
                                   ? 'bg-gradient-to-r from-emerald-700 to-emerald-600 text-white font-bold shadow-xs border-l-4 border-amber-300'
-                                  : isCheckOut
-                                  ? 'bg-gradient-to-r from-emerald-600 to-emerald-700 text-white font-bold shadow-xs border-r-4 border-rose-300'
                                   : isConfirmed
-                                  ? 'bg-gradient-to-br from-emerald-600 to-emerald-700 text-white font-bold shadow-xs'
+                                  ? 'bg-emerald-600/90 text-white font-semibold shadow-xs'
                                   : isPending
-                                  ? 'bg-gradient-to-br from-amber-500 to-amber-600 text-white font-bold shadow-xs'
+                                  ? 'bg-amber-500/90 text-white font-semibold shadow-xs'
                                   : 'bg-stone-500 text-white'
                               }`}
-                              title={`[${isCheckIn ? 'Check-In Date' : ''} ${isCheckOut ? 'Check-Out Date' : ''}] Guest ${booking.guestName} (${booking.id})`}
+                              title={`[Check-In Date] Guest ${booking.guestName} (${booking.id})`}
                               aria-label={`View complete details for guest ${booking.guestName}`}
                             >
                               <div className="flex items-center justify-center gap-0.5 text-[8.5px] font-mono font-black uppercase tracking-tighter opacity-95">
-                                {isCheckIn && <span className="bg-amber-400 text-stone-900 px-1 rounded-[3px]">IN</span>}
-                                {isCheckOut && <span className="bg-rose-500 text-white px-1 rounded-[3px]">OUT</span>}
+                                {isCheckIn && <span className="bg-amber-400 text-stone-900 px-1 rounded-[3px]">CHECK-IN</span>}
                               </div>
                               <div className="text-[10px] leading-tight truncate px-0.5 font-black hover:underline tracking-tight">
                                 {booking.guestName.split(' ')[0]}

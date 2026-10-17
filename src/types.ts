@@ -18,6 +18,7 @@ export interface PaxRateTier {
   pax: number;
   weekdayRate: number; // Mon to Thu
   weekendRate: number; // Fri to Sun
+  rateDays?: string; // e.g. 'Monday to Thursday', 'Friday to Sunday'
 }
 
 export interface RoomUnit {

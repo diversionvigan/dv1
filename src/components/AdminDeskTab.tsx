@@ -3898,6 +3898,7 @@ export const AdminDeskTab: React.FC<AdminDeskTabProps> = ({
                                 <tr>
                                   <th className="py-2 px-3">Pax Tier</th>
                                   <th className="py-2 px-3">Guests</th>
+                                  <th className="py-2 px-3">Rate Days</th>
                                   <th className="py-2 px-3">{weekdayHeader}</th>
                                   <th className="py-2 px-3">{weekendHeader}</th>
                                   <th className="py-2 px-2 text-center">Action</th>
@@ -3954,6 +3955,28 @@ export const AdminDeskTab: React.FC<AdminDeskTabProps> = ({
                                       />
                                     </td>
                                     <td className="py-1.5 px-3">
+                                     <td className="py-1.5 px-3">
+                                       <input
+                                         type="text"
+                                         value={tier.rateDays || ''}
+                                         placeholder="e.g. Mon-Thu"
+                                         onChange={(e) => {
+                                           const val = e.target.value;
+                                           setInventoryRooms((prev) =>
+                                             prev.map((r) => {
+                                               if (r.id !== selectedInventoryRoom.id) return r;
+                                               const currentTiers = [...(r.paxRates || [])];
+                                               if (currentTiers[tierIdx]) {
+                                                 currentTiers[tierIdx] = { ...currentTiers[tierIdx], rateDays: val };
+                                               }
+                                               const rateDisplays = recomputeRateDisplay(currentTiers);
+                                               return { ...r, paxRates: currentTiers, ...rateDisplays };
+                                             })
+                                           );
+                                         }}
+                                         className="w-28 px-2 py-1 rounded border border-[#E6D7C3] text-xs font-medium outline-none"
+                                       />
+                                     </td>
                                       <input
                                         type="number"
                                         value={tier.weekdayRate}
