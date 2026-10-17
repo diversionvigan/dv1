@@ -37,7 +37,7 @@ COPY --from=builder /app/tsconfig.json ./tsconfig.json
 # Pre-create data and uploads directories and ensure correct user ownership
 RUN mkdir -p /app/data /app/public/uploads && chmod -R 777 /app/data /app/public/uploads && chown -R node:node /app/data /app/public/uploads /app
 
-USER node
+# USER node (Disabled to allow root execution and prevent mounted volume permission blocks)
 
 EXPOSE 3000
 
