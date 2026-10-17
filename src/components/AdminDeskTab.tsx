@@ -3955,7 +3955,6 @@ export const AdminDeskTab: React.FC<AdminDeskTabProps> = ({
                                       />
                                     </td>
                                     <td className="py-1.5 px-3">
-                                     <td className="py-1.5 px-3">
                                        <input
                                          type="text"
                                          value={tier.rateDays || ''}
@@ -3977,8 +3976,8 @@ export const AdminDeskTab: React.FC<AdminDeskTabProps> = ({
                                          className="w-28 px-2 py-1 rounded border border-[#E6D7C3] text-xs font-medium outline-none"
                                        />
                                      </td>
-                                      <input
-                                        type="number"
+                                     <td className="py-1.5 px-3">
+                                       <input
                                         value={tier.weekdayRate}
                                         onChange={(e) => {
                                           const val = Number(e.target.value);
