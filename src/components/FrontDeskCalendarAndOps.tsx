@@ -6,6 +6,7 @@ import {
   StaffPermissions,
   PaymentMethod,
 } from '../types';
+import { formatLocalDate } from '../utils/dateUtils';
 import { 
   Calendar as CalendarIcon, 
   ChevronLeft, 
@@ -174,8 +175,7 @@ export const FrontDeskCalendarAndOps: React.FC<FrontDeskCalendarAndOpsProps> = (
 
   // Helper date calculations
   const todayStr = useMemo(() => {
-    const d = new Date();
-    return d.toISOString().split('T')[0];
+    return formatLocalDate(new Date());
   }, []);
 
   // Generate date columns for calendar (15 days or 30 days)
@@ -212,9 +212,9 @@ export const FrontDeskCalendarAndOps: React.FC<FrontDeskCalendarAndOpsProps> = (
     setCalendarBaseDate(new Date());
   };
 
-  // Fast matching booking for room and date
+  // Fast matching booking for room and date - SHOW ONLY CHECK-IN DATE
   const getBookingForRoomAndDate = (roomId: string, date: Date): BookingRecord | undefined => {
-    const dStr = date.toISOString().split('T')[0];
+    const dStr = formatLocalDate(date);
     return bookings.find(b => {
       if (b.roomId !== roomId && !b.roomTitle.toLowerCase().includes(roomId.toLowerCase())) return false;
       if (b.status === 'Cancelled') return false;
@@ -222,7 +222,7 @@ export const FrontDeskCalendarAndOps: React.FC<FrontDeskCalendarAndOpsProps> = (
       if (b.stayType === 'hourly') {
         return b.hourlyDate === dStr;
       }
-      if (b.checkInDate && b.checkOutDate) {
+      if (b.checkInDate) {
         return dStr === b.checkInDate;
       }
       return false;
@@ -231,7 +231,7 @@ export const FrontDeskCalendarAndOps: React.FC<FrontDeskCalendarAndOpsProps> = (
 
   // Check if room is blocked for maintenance on date
   const getBlockForRoomAndDate = (roomId: string, date: Date): RoomMaintenanceBlock | undefined => {
-    const dStr = date.toISOString().split('T')[0];
+    const dStr = formatLocalDate(date);
     return maintenanceBlocks.find(b => {
       return b.roomId === roomId && dStr >= b.startDate && dStr <= b.endDate;
     });
@@ -345,7 +345,7 @@ export const FrontDeskCalendarAndOps: React.FC<FrontDeskCalendarAndOpsProps> = (
       roomId: newBlockModal.roomId,
       roomTitle: targetRoom?.title || newBlockModal.roomId,
       startDate: newBlockModal.dateStr,
-      endDate: end.toISOString().split('T')[0],
+      endDate: formatLocalDate(end),
       reason: blockReason,
       blockedBy: currentStaffName,
       createdAt: new Date().toISOString(),
@@ -620,7 +620,7 @@ export const FrontDeskCalendarAndOps: React.FC<FrontDeskCalendarAndOpsProps> = (
                   <th className="p-3 w-56 sticky left-0 z-20 bg-[#2C1E15] shadow-md">Accommodation Unit</th>
                   <th className="p-3 w-28 text-center text-[11px]">Readiness</th>
                   {calendarDates.map((date, idx) => {
-                    const isToday = date.toISOString().split('T')[0] === todayStr;
+                    const isToday = formatLocalDate(date) === todayStr;
                     const isWeekend = date.getDay() === 0 || date.getDay() === 6;
                     return (
                       <th
@@ -702,7 +702,7 @@ export const FrontDeskCalendarAndOps: React.FC<FrontDeskCalendarAndOpsProps> = (
 
                       {/* Days Slots */}
                       {calendarDates.map((date, idx) => {
-                        const dateStr = date.toISOString().split('T')[0];
+                        const dateStr = formatLocalDate(date);
                         const booking = getBookingForRoomAndDate(room.id, date);
                         const block = getBlockForRoomAndDate(room.id, date);
                         const isToday = dateStr === todayStr;

@@ -1,5 +1,6 @@
 import { ModernBackButton } from './ModernBackButton';
 import { registerGuestAccount } from '../utils/guestAuth';
+import { formatLocalDate, getNextDayStr, getLocalDateToday, getLocalDateTomorrow } from '../utils/dateUtils';
 import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import { 
   RoomUnit, 
@@ -130,24 +131,17 @@ export const BookingEngineTab: React.FC<BookingEngineTabProps> = ({
   );
 
   // Today and Tomorrow default dates
-  const todayStr = useMemo(() => new Date().toISOString().split('T')[0], []);
-  const tomorrowStr = useMemo(() => {
-    const d = new Date();
-    d.setDate(d.getDate() + 1);
-    return d.toISOString().split('T')[0];
-  }, []);
+  const todayStr = useMemo(() => getLocalDateToday(), []);
+  const tomorrowStr = useMemo(() => getLocalDateTomorrow(), []);
 
   const availableDateOptions = useMemo(() => {
     const list: { dateStr: string; label: string }[] = [];
-    const curr = new Date();
     for (let i = 0; i < 180; i++) {
-      const y = curr.getFullYear();
-      const m = String(curr.getMonth() + 1).padStart(2, '0');
-      const d = String(curr.getDate()).padStart(2, '0');
-      const dateStr = `${y}-${m}-${d}`;
-      const label = curr.toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: 'numeric', weekday: 'short' });
-      list.push({ dateStr, label });
-      curr.setDate(curr.getDate() + 1);
+      const d = new Date();
+      d.setDate(d.getDate() + i);
+      const dateStr = formatLocalDate(d);
+      const label = d.toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: 'numeric', weekday: 'short' });
+      list.push({ dateStr, label: i === 0 ? `Today (${label})` : label });
     }
     return list;
   }, []);
@@ -582,7 +576,7 @@ export const BookingEngineTab: React.FC<BookingEngineTabProps> = ({
 
     const cur = new Date(start);
     while (cur < end) {
-      const dateStr = cur.toISOString().split('T')[0];
+      const dateStr = formatLocalDate(cur);
       const day = cur.getDay();
       const isWeekend = day === 5 || day === 6;
       const label = cur.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
@@ -1714,8 +1708,7 @@ export const BookingEngineTab: React.FC<BookingEngineTabProps> = ({
                                         onClick={() => {
                                           if (dateStr < checkInDate || !checkInDate) {
                                             setCheckInDate(dateStr);
-                                            const nxt = new Date(y, m - 1, d + 1);
-                                            setCheckOutDate(nxt.toISOString().split('T')[0]);
+                                            setCheckOutDate(getNextDayStr(dateStr, 1));
                                           } else {
                                             setCheckOutDate(dateStr);
                                           }
@@ -1772,8 +1765,7 @@ export const BookingEngineTab: React.FC<BookingEngineTabProps> = ({
                                         onClick={() => {
                                           if (dateStr < checkInDate || !checkInDate) {
                                             setCheckInDate(dateStr);
-                                            const nxt = new Date(y, m - 1, d + 1);
-                                            setCheckOutDate(nxt.toISOString().split('T')[0]);
+                                            setCheckOutDate(getNextDayStr(dateStr, 1));
                                           } else {
                                             setCheckOutDate(dateStr);
                                           }

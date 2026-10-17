@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { RoomUnit, RoomCategory, StayType, RoomReview } from '../types';
+import { getLocalDateToday, getLocalDateTomorrow } from '../utils/dateUtils';
 import { 
   Users,
   BedDouble, 
@@ -50,12 +51,8 @@ export const ExploreRoomsTab: React.FC<ExploreRoomsTabProps> = ({
   const [stayTypePreference, setStayTypePreference] = useState<StayType>('nightly');
   
   // Today and Tomorrow default dates for the booking search bar
-  const todayStr = useMemo(() => new Date().toISOString().split('T')[0], []);
-  const tomorrowStr = useMemo(() => {
-    const d = new Date();
-    d.setDate(d.getDate() + 1);
-    return d.toISOString().split('T')[0];
-  }, []);
+  const todayStr = useMemo(() => getLocalDateToday(), []);
+  const tomorrowStr = useMemo(() => getLocalDateTomorrow(), []);
 
   const [guestType, setGuestType] = useState<'Adult' | 'Children' | 'Toddler' | 'Pwd'>('Adult');
   const [paxByGuest, setPaxByGuest] = useState<{

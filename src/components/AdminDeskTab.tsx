@@ -1,5 +1,6 @@
 import { ModernBackButton } from './ModernBackButton';
 import { FrontDeskCalendarAndOps } from './FrontDeskCalendarAndOps';
+import { formatLocalDate, getNextDayStr } from '../utils/dateUtils';
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { 
   BookingRecord, 
@@ -1380,8 +1381,8 @@ export const AdminDeskTab: React.FC<AdminDeskTabProps> = ({
   };
 
   // Walk-in form state
-  const walkinTodayStr = new Date().toISOString().split('T')[0];
-  const walkinTomorrowStr = new Date(Date.now() + 86400000).toISOString().split('T')[0];
+  const walkinTodayStr = formatLocalDate(new Date());
+  const walkinTomorrowStr = getNextDayStr(walkinTodayStr, 1);
   const [walkinCheckInDate, setWalkinCheckInDate] = useState<string>(walkinTodayStr);
   const [walkinCheckOutDate, setWalkinCheckOutDate] = useState<string>(walkinTomorrowStr);
   const walkinNights = useMemo(() => {
@@ -2451,7 +2452,12 @@ export const AdminDeskTab: React.FC<AdminDeskTabProps> = ({
           onDeleteBooking={onDeleteBooking}
           onOpenVoucher={onOpenVoucher}
           onOpenSlipLightbox={onOpenSlipLightbox}
-          onQuickWalkinForDate={() => {
+          onQuickWalkinForDate={(roomId, dateStr) => {
+            if (roomId) setWalkinRoomIds([roomId]);
+            if (dateStr) {
+              setWalkinCheckInDate(dateStr);
+              setWalkinCheckOutDate(getNextDayStr(dateStr, 1));
+            }
             setActiveSubTab('walkin');
           }}
           onAddWalkinBooking={onAddWalkinBooking}
@@ -8454,14 +8460,12 @@ export const AdminDeskTab: React.FC<AdminDeskTabProps> = ({
                       type="date"
                       required
                       value={walkinCheckInDate}
-                      min={new Date().toISOString().split('T')[0]}
+                      min={walkinTodayStr}
                       onChange={(e) => {
                         const newIn = e.target.value;
                         setWalkinCheckInDate(newIn);
                         if (newIn >= walkinCheckOutDate) {
-                          const d = new Date(newIn);
-                          d.setDate(d.getDate() + 1);
-                          setWalkinCheckOutDate(d.toISOString().split('T')[0]);
+                          setWalkinCheckOutDate(getNextDayStr(newIn, 1));
                         }
                       }}
                       className="w-full px-3.5 py-2.5 rounded-xl border border-[#E6D7C3] bg-[#FDFBF7] text-xs font-semibold text-[#2C1E15] outline-none"
@@ -8473,7 +8477,7 @@ export const AdminDeskTab: React.FC<AdminDeskTabProps> = ({
                       type="date"
                       required
                       value={walkinCheckOutDate}
-                      min={walkinCheckInDate || new Date().toISOString().split('T')[0]}
+                      min={walkinCheckInDate ? getNextDayStr(walkinCheckInDate, 1) : walkinTomorrowStr}
                       onChange={(e) => setWalkinCheckOutDate(e.target.value)}
                       className="w-full px-3.5 py-2.5 rounded-xl border border-[#E6D7C3] bg-[#FDFBF7] text-xs font-semibold text-[#2C1E15] outline-none"
                     />
