@@ -25,8 +25,21 @@ async function startServer() {
   app.use(express.json({ limit: '50mb' }));
   app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 
-  // Statically serve uploaded images permanently
-  app.use('/uploads', express.static(UPLOADS_DIR));
+  // Statically serve uploaded images permanently with zero-cache headers
+  app.use('/uploads', (req, res, next) => {
+    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+    res.setHeader('Pragma', 'no-cache');
+    res.setHeader('Expires', '0');
+    next();
+  }, express.static(UPLOADS_DIR, {
+    etag: false,
+    lastModified: false,
+    setHeaders: (res) => {
+      res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+      res.setHeader('Pragma', 'no-cache');
+      res.setHeader('Expires', '0');
+    }
+  }));
 
   // ==========================================
   // PERMANENT IMAGE UPLOAD REST API
@@ -55,9 +68,10 @@ async function startServer() {
         const base64Str = items[i];
         if (!base64Str) continue;
 
-        // If it's already an existing URL path, retain it
+        // If it's already an existing URL path, retain it with fresh cache-busting timestamp
         if (base64Str.startsWith('/uploads/') || base64Str.startsWith('http://') || base64Str.startsWith('https://')) {
-          savedUrls.push(base64Str);
+          const cleanUrl = base64Str.split('?')[0];
+          savedUrls.push(`${cleanUrl}?v=${Date.now()}`);
           continue;
         }
 
@@ -78,16 +92,34 @@ async function startServer() {
           buffer = Buffer.from(raw, 'base64');
         }
 
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const day = String(now.getDate()).padStart(2, '0');
+        const hours = String(now.getHours()).padStart(2, '0');
+        const mins = String(now.getMinutes()).padStart(2, '0');
+        const secs = String(now.getSeconds()).padStart(2, '0');
+        const dateFormatted = `${year}${month}${day}-${hours}${mins}${secs}`;
         const timestamp = Date.now();
         const rand = Math.floor(1000 + Math.random() * 9000);
-        const prefix = folder ? `${folder}_` : 'img_';
-        const fileName = `${prefix}${timestamp}_${i + 1}_${rand}.${ext}`;
+
+        let prefix = 'img';
+        if (folder === 'room_cover' || folder === 'cover_image' || folder === 'cover') {
+          prefix = `cover-image-${dateFormatted}`;
+        } else if (folder) {
+          prefix = `${folder}-${dateFormatted}`;
+        }
+
+        const fileName = `${prefix}-${rand}.${ext}`;
         const filePath = path.join(UPLOADS_DIR, fileName);
 
         fs.writeFileSync(filePath, buffer);
-        savedUrls.push(`/uploads/${fileName}`);
+        savedUrls.push(`/uploads/${fileName}?v=${timestamp}`);
       }
 
+      res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+      res.setHeader('Pragma', 'no-cache');
+      res.setHeader('Expires', '0');
       res.json({
         success: true,
         url: savedUrls[0] || '',
@@ -433,6 +465,9 @@ async function startServer() {
 
   app.get('/api/rooms', (_req, res) => {
     try {
+      res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+      res.setHeader('Pragma', 'no-cache');
+      res.setHeader('Expires', '0');
       const rooms = Storage.getRooms();
       res.json({ success: true, data: rooms });
     } catch (err: any) {
@@ -442,6 +477,9 @@ async function startServer() {
 
   app.put('/api/rooms', (req, res) => {
     try {
+      res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+      res.setHeader('Pragma', 'no-cache');
+      res.setHeader('Expires', '0');
       const { rooms } = req.body;
       if (!Array.isArray(rooms)) {
         return res.status(400).json({ success: false, error: 'Rooms must be an array.' });

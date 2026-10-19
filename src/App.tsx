@@ -152,7 +152,10 @@ export default function App() {
       const [bookingsRes, inquiriesRes, roomsRes, reviewsRes] = await Promise.allSettled([
         fetch('/api/bookings'),
         fetch('/api/inquiries'),
-        fetch('/api/rooms'),
+        fetch(`/api/rooms?t=${Date.now()}`, { 
+          cache: 'no-store', 
+          headers: { 'Cache-Control': 'no-cache, no-store, must-revalidate' } 
+        }),
         fetch('/api/reviews'),
       ]);
 
@@ -184,11 +187,30 @@ export default function App() {
         const rJson = await roomsRes.value.json();
         if (rJson.success && Array.isArray(rJson.data) && rJson.data.length > 0) {
           setRooms((prev) => {
-            const existingIds = new Set(prev.map((r) => String(r.id)));
-            const newFromServer = rJson.data.filter((r: RoomUnit) => !existingIds.has(String(r.id)));
-            const merged = [...prev, ...newFromServer];
-            if (JSON.stringify(prev) === JSON.stringify(merged)) return prev;
-            return merged;
+            const serverMap = new Map<string, RoomUnit>(rJson.data.map((r: RoomUnit) => [String(r.id), r]));
+            const updated = prev.map((localRoom) => {
+              const serverRoom = serverMap.get(String(localRoom.id));
+              if (serverRoom) {
+                return {
+                  ...localRoom,
+                  ...serverRoom,
+                  images: serverRoom.images && serverRoom.images.length > 0 ? serverRoom.images : localRoom.images,
+                  pricing: serverRoom.pricing || localRoom.pricing,
+                  paxRates: serverRoom.paxRates || localRoom.paxRates,
+                };
+              }
+              return localRoom;
+            });
+            // Also append any new rooms from server
+            rJson.data.forEach((sr: RoomUnit) => {
+              if (!prev.some((pr) => String(pr.id) === String(sr.id))) {
+                updated.push(sr);
+              }
+            });
+            try {
+              localStorage.setItem('diversion_admin_inventory_rooms', JSON.stringify(updated));
+            } catch {}
+            return updated;
           });
         }
       }

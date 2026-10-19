@@ -452,7 +452,10 @@ export const AdminDeskTab: React.FC<AdminDeskTabProps> = ({
         try {
           const res = await fetch('/api/upload', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 
+              'Content-Type': 'application/json',
+              'Cache-Control': 'no-cache, no-store, must-revalidate'
+            },
             body: JSON.stringify({
               image: base64,
               folder: 'room_cover',
@@ -465,6 +468,13 @@ export const AdminDeskTab: React.FC<AdminDeskTabProps> = ({
           }
         } catch (err) {
           console.warn('Backend cover photo upload fallback to base64:', err);
+        }
+
+        // Permanent fix: Ensure unique cover-image URL with cache-busting timestamp: cover-image.jpg?v=<updated timestamp>
+        const timestamp = Date.now();
+        if (finalUrl.startsWith('/uploads/') || finalUrl.startsWith('http://') || finalUrl.startsWith('https://')) {
+          const cleanUrl = finalUrl.split('?')[0];
+          finalUrl = `${cleanUrl}?v=${timestamp}`;
         }
 
         const updatedImages = [finalUrl, ...selectedInventoryRoom.images.filter((img) => img !== finalUrl)];
@@ -533,7 +543,12 @@ export const AdminDeskTab: React.FC<AdminDeskTabProps> = ({
 
   const handleSetCoverPhoto = async (index: number) => {
     if (!selectedInventoryRoom || index === 0 || index >= selectedInventoryRoom.images.length) return;
-    const targetImage = selectedInventoryRoom.images[index];
+    let targetImage = selectedInventoryRoom.images[index];
+    const timestamp = Date.now();
+    if (targetImage.startsWith('/uploads/') || targetImage.startsWith('http://') || targetImage.startsWith('https://')) {
+      const cleanUrl = targetImage.split('?')[0];
+      targetImage = `${cleanUrl}?v=${timestamp}`;
+    }
     const otherImages = selectedInventoryRoom.images.filter((_, i) => i !== index);
     const updatedImages = [targetImage, ...otherImages];
     await handleUpdateRoomImages(
@@ -568,7 +583,11 @@ export const AdminDeskTab: React.FC<AdminDeskTabProps> = ({
     if (targetIdx < 0 || targetIdx >= selectedInventoryRoom.images.length) return;
 
     const list = [...selectedInventoryRoom.images];
-    const temp = list[index];
+    let temp = list[index];
+    if (targetIdx === 0 && (temp.startsWith('/uploads/') || temp.startsWith('http://') || temp.startsWith('https://'))) {
+      const cleanUrl = temp.split('?')[0];
+      temp = `${cleanUrl}?v=${Date.now()}`;
+    }
     list[index] = list[targetIdx];
     list[targetIdx] = temp;
 
@@ -590,14 +609,22 @@ export const AdminDeskTab: React.FC<AdminDeskTabProps> = ({
       try {
         const res = await fetch('/api/upload', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ image: url, folder: 'room' })
+          headers: { 
+            'Content-Type': 'application/json',
+            'Cache-Control': 'no-cache, no-store, must-revalidate'
+          },
+          body: JSON.stringify({ image: url, folder: asCover ? 'room_cover' : 'room' })
         });
         const data = await res.json();
         if (data.success && data.url) {
           url = data.url;
         }
       } catch {}
+    }
+
+    if (asCover && (url.startsWith('/uploads/') || url.startsWith('http://') || url.startsWith('https://'))) {
+      const cleanUrl = url.split('?')[0];
+      url = `${cleanUrl}?v=${Date.now()}`;
     }
 
     const updatedImages = asCover
